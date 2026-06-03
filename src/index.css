@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;500;600&family=Poppins:wght@300;400;500;600&display=swap');
+
+@import "tailwindcss";
+
+:root {
+  --baby-blue: #dcefff;
+  --teal-blue: #2f9da3;
+  --soft-pink: #f8dce8;
+  --soft-green: #b7d8c3;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+}
+
+.petal {
+  position: absolute;
+  top: -10%;
+  font-size: 18px;
+  pointer-events: none;
+  z-index: 20;
+
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-100px) translateX(0);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(50vh) translateX(30px);
+  }
+
+  100% {
+    transform: translateY(110vh) translateX(-30px);
+    opacity: 0;
+  }
+}
