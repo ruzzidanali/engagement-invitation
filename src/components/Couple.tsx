@@ -1,5 +1,6 @@
 import { invitationData } from "../data/invitationData";
-import AnimatedSection from "./AnimatedSection";
+import { motion } from "framer-motion";
+// import AnimatedSection from "./AnimatedSection";
 
 export default function Couple() {
   return (
@@ -17,20 +18,50 @@ export default function Couple() {
         py-24
       "
     >
-      <AnimatedSection>
+      <div>
         <div className="max-w-5xl mx-auto text-center">
-          <p
+          <motion.p
+            initial={{
+              opacity: 0,
+              y: 30,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.4,
+            }}
+            transition={{
+              duration: 0.8,
+            }}
             className="
               uppercase
               tracking-[4px]
               text-sm
-              text-[#8b7b68]
+            text-[#8b7b68]
             "
           >
             Pasangan
-          </p>
+          </motion.p>
 
-          <h2
+          <motion.h2
+            initial={{
+              opacity: 0,
+              scale: 0.9,
+            }}
+            whileInView={{
+              opacity: 1,
+              scale: 1,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 1,
+              delay: 0.2,
+            }}
             className="
               mt-5
               text-[60px]
@@ -46,9 +77,24 @@ export default function Couple() {
             &
             <br />
             {invitationData.groom.firstName}
-          </h2>
+          </motion.h2>
 
-          <p
+          <motion.p
+            initial={{
+              opacity: 0,
+              y: 30,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 0.8,
+              delay: 0.4,
+            }}
             className="
               mt-8
 
@@ -59,13 +105,27 @@ export default function Couple() {
               text-gray-600
             "
           >
-            Dengan penuh kesyukuran ke hadrat Allah SWT,
-            kami menjemput Dato' / Datin / Tuan / Puan /
-            Encik / Cik ke majlis pertunangan kami.
-          </p>
+            Dengan penuh kesyukuran ke hadrat Allah SWT, kami menjemput Dato' /
+            Datin / Tuan / Puan / Encik / Cik ke majlis pertunangan kami.
+          </motion.p>
 
           {/* Bride Card */}
-          <div
+          <motion.div
+            initial={{
+              opacity: 0,
+              x: -100,
+            }}
+            whileInView={{
+              opacity: 1,
+              x: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 1,
+              delay: 0.5,
+            }}
             className="
               mt-16
 
@@ -106,9 +166,7 @@ export default function Couple() {
             </h3>
 
             <div className="mt-6">
-              <p className="text-gray-500">
-                Anak kepada
-              </p>
+              <p className="text-gray-500">Anak kepada</p>
 
               <p className="mt-3 font-semibold">
                 {invitationData.bride.father}
@@ -116,11 +174,9 @@ export default function Couple() {
 
               <p className="my-2">&</p>
 
-              <p className="font-semibold">
-                {invitationData.bride.mother}
-              </p>
+              <p className="font-semibold">{invitationData.bride.mother}</p>
             </div>
-          </div>
+          </motion.div>
 
           {/* Divider */}
           <div className="my-12">
@@ -138,7 +194,22 @@ export default function Couple() {
           </div>
 
           {/* Groom Card */}
-          <div
+          <motion.div
+            initial={{
+              opacity: 0,
+              x: 100,
+            }}
+            whileInView={{
+              opacity: 1,
+              x: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 1,
+              delay: 1,
+            }}
             className="
               rounded-[35px]
 
@@ -177,9 +248,7 @@ export default function Couple() {
             </h3>
 
             <div className="mt-6">
-              <p className="text-gray-500">
-                Anak kepada
-              </p>
+              <p className="text-gray-500">Anak kepada</p>
 
               <p className="mt-3 font-semibold">
                 {invitationData.groom.father}
@@ -187,13 +256,11 @@ export default function Couple() {
 
               <p className="my-2">&</p>
 
-              <p className="font-semibold">
-                {invitationData.groom.mother}
-              </p>
+              <p className="font-semibold">{invitationData.groom.mother}</p>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </AnimatedSection>
+      </div>
     </section>
   );
 }

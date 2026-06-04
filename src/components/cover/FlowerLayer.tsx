@@ -203,12 +203,12 @@ export default function FlowerLayer({ y }: Props) {
         className="
           absolute
           left-1/2
-          bottom-[20%]
+          bottom-[12%]
 
           -translate-x-1/2
 
-          w-[90%]
-          max-w-[420px]
+          w-[110%]
+          max-w-[450px]
 
           pointer-events-none
           select-none
