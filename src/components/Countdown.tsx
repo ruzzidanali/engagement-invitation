@@ -123,7 +123,7 @@ function CountdownCard({
       className="
         rounded-[30px]
 
-        bg-white/80
+        bg-white
         backdrop-blur-sm
 
         border

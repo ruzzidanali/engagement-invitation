@@ -1,8 +1,12 @@
+import { motion, useScroll, useTransform } from "framer-motion";
+
 import logo from "../assets/logo.png";
-import background from "../assets/scenic-background.png";
-import frame from "../assets/flower-frame.png";
 
 import FloatingPetals from "./FloatingPetals";
+import CoverScene from "./cover/CoverScene";
+import ShimmerLogo from "./cover/ShimmerLogo";
+import ShimmerText from "./cover/ShimmerText";
+import SparkleParticles from "./cover/SparkleParticles";
 
 import { invitationData } from "../data/invitationData";
 
@@ -11,6 +15,12 @@ interface CoverProps {
 }
 
 export default function Cover({ onOpen }: CoverProps) {
+  const { scrollY } = useScroll();
+
+  const contentY = useTransform(scrollY, [0, 500], [0, -250]);
+
+  const contentOpacity = useTransform(scrollY, [0, 300], [1, 0]);
+
   const handleOpenInvitation = () => {
     onOpen();
 
@@ -23,134 +33,255 @@ export default function Cover({ onOpen }: CoverProps) {
 
   return (
     <section className="relative min-h-screen overflow-hidden">
-      {/* Background */}
-      <img
-        src={background}
-        alt="Background"
-        className="absolute inset-0 h-full w-full object-cover"
-      />
+      {/* Animated Scene */}
+      <CoverScene />
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-white/50" />
+      <div className="absolute inset-0 bg-white/10" />
 
-      {/* Falling Petals */}
+      {/* Petals */}
       <FloatingPetals />
 
-      {/* Floral Frame */}
-      <img
-        src={frame}
-        alt="Frame"
-        className="
-          absolute
-          inset-0
-          h-full
-          w-full
-          object-fill
-          pointer-events-none
-          select-none
-        "
-      />
+      {/* Sparkles */}
+      <SparkleParticles />
 
       {/* Main Container */}
-      <div className="relative z-10 flex min-h-screen items-center justify-center px-2 py-4">
-        <div className="relative w-full max-w-[450px] h-[95vh]">
+      <div
+        className="
+          relative
+          z-10
+
+          flex
+          min-h-screen
+
+          items-center
+          justify-center
+
+          px-3
+          py-3
+        "
+      >
+        <div
+          className="
+            relative
+
+            w-full
+            max-w-[430px]
+
+            aspect-[9/16]
+
+            overflow-hidden
+          "
+        >
           {/* Content */}
-          <div
+          <motion.div
+            style={{
+              y: contentY,
+              opacity: contentOpacity,
+            }}
             className="
               absolute
               inset-0
 
               flex
               flex-col
+
               items-center
+              justify-center
+
               text-center
 
-              px-8
-              pt-[200px]
+              px-6
+              sm:px-8
+
+              pb-[5%]
             "
           >
             {/* Logo */}
-            <img
-              src={logo}
-              alt="HR Logo"
-              className="
-                w-16
-                md:w-20
-                mb-5
-              "
-            />
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 40,
+                scale: 0.8,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                scale: 1,
+              }}
+              transition={{
+                duration: 1,
+                delay: 6,
+              }}
+            >
+              <ShimmerLogo src={logo} />
+            </motion.div>
 
             {/* Title */}
-            <p
+            <motion.p
+              initial={{
+                opacity: 0,
+                y: 20,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                duration: 0.8,
+                delay: 7,
+              }}
               className="
+                mt-4
+
                 uppercase
-                tracking-[4px]
-                text-[11px]
+
+                text-[10px]
+                sm:text-[11px]
+                md:text-[12px]
+
+                tracking-[3px]
+                sm:tracking-[4px]
+
                 text-[#6d6258]
               "
             >
               {invitationData.event.title}
-            </p>
+            </motion.p>
 
             {/* Bride Name */}
-            <h1
-              className="
-                mt-2
-                text-[60px]
-                leading-none
-                text-[#1f6f75]
-              "
-              style={{
-                fontFamily: "Great Vibes",
+            <motion.h1
+              initial={{
+                opacity: 0,
+                y: 30,
               }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                duration: 1,
+                delay: 7.5,
+              }}
+              className="
+                mt-3
+
+                text-[48px]
+                sm:text-[56px]
+                md:text-[60px]
+                lg:text-[68px]
+
+                leading-none
+              "
             >
-              {invitationData.bride.firstName}
-            </h1>
+              <ShimmerText
+                style={{
+                  fontFamily: "Great Vibes",
+                }}
+              >
+                {invitationData.bride.firstName}
+              </ShimmerText>
+            </motion.h1>
 
             {/* Ampersand */}
-            <p
+            <motion.p
+              initial={{
+                opacity: 0,
+                scale: 0.8,
+              }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+              }}
+              transition={{
+                duration: 0.8,
+                delay: 8,
+              }}
               className="
                 my-1
-                text-2xl
+
+                text-xl
+                sm:text-2xl
+
                 text-[#8b7b68]
               "
             >
               &
-            </p>
+            </motion.p>
 
             {/* Groom Name */}
-            <h1
+            <motion.h1
+              initial={{
+                opacity: 0,
+                y: 30,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                duration: 1,
+                delay: 8.5,
+              }}
               className="
-                text-[60px]
+                text-[48px]
+                sm:text-[56px]
+                md:text-[60px]
+                lg:text-[68px]
+
                 leading-none
-                text-[#1f6f75]
+
+                overflow-visible
               "
-              style={{
-                fontFamily: "Great Vibes",
+            >
+              <ShimmerText
+                style={{
+                  fontFamily: "Great Vibes",
+                }}
+              >
+                {invitationData.groom.firstName}
+              </ShimmerText>
+            </motion.h1>
+
+            {/* Button */}
+            <motion.div
+              initial={{
+                opacity: 0,
+              }}
+              animate={{
+                opacity: 1,
+              }}
+              transition={{
+                duration: 1,
+                delay: 9.5,
               }}
             >
-              {invitationData.groom.firstName}
-            </h1>
-
-            {/* Open Button */}
-            <button
-              onClick={handleOpenInvitation}
-              className="
-                mt-10
+              <button
+                onClick={handleOpenInvitation}
+                className="
+                mt-8
+                sm:mt-10
 
                 rounded-full
 
                 bg-white
 
-                px-10
-                py-4
+                px-8
+                sm:px-10
+
+                py-3
+                sm:py-4
 
                 shadow-xl
 
-                text-xs
+                text-[10px]
+                sm:text-xs
+
                 font-semibold
 
-                tracking-[4px]
+                tracking-[3px]
+                sm:tracking-[4px]
+
                 uppercase
 
                 text-[#4a4037]
@@ -159,11 +290,12 @@ export default function Cover({ onOpen }: CoverProps) {
                 duration-300
 
                 hover:scale-105
-              "
-            >
-              Buka Jemputan
-            </button>
-          </div>
+                "
+              >
+                Buka Jemputan
+              </button>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

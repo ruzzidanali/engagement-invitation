@@ -58,8 +58,8 @@ export default function MusicPlayer({
 
             z-50
 
-            w-14
-            h-14
+            w-16
+            h-16
 
             rounded-full
 

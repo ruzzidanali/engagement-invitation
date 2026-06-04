@@ -31,14 +31,23 @@ export const invitationData = {
     ],
 
     coordinates: {
-        lat: 2.588938,
-        lng: 102.1012798,
+      lat: 2.588938,
+      lng: 102.1012798,
     },
 
-    waze:
-      "https://ul.waze.com/ul?place=EjoyMDEsIEphbGFuIFRzciA0OCwgNzEzMDAgUmVtYmF1LCBOZWdlcmkgU2VtYmlsYW4sIE1hbGF5c2lhIjESLwoUChIJUZbn7kUIzjER9OWCYfl5EQcQyQEqFAoSCW2myO5FCM4xEQrYf5uID9yK&ll=2.58893800%2C102.10127980&navigate=yes&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location",
+    waze: "https://ul.waze.com/ul?place=EjoyMDEsIEphbGFuIFRzciA0OCwgNzEzMDAgUmVtYmF1LCBOZWdlcmkgU2VtYmlsYW4sIE1hbGF5c2lhIjESLwoUChIJUZbn7kUIzjER9OWCYfl5EQcQyQEqFAoSCW2myO5FCM4xEQrYf5uID9yK&ll=2.58893800%2C102.10127980&navigate=yes&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location",
 
-    gmap:
-      "https://maps.app.goo.gl/xf2mRRBzP14hpULWA",
+    gmap: "https://maps.app.goo.gl/xf2mRRBzP14hpULWA",
   },
+  closing: {
+      title: "Terima Kasih",
+
+      message:
+        "Kehadiran dan doa restu daripada pihak tuan/puan amat kami hargai.",
+
+      verse:
+        "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan-pasangan dari jenismu sendiri supaya kamu cenderung dan merasa tenteram kepadanya.",
+
+      source: "Surah Ar-Rum : 21",
+    },
 };

@@ -62,17 +62,6 @@ export default function EventDetails() {
             {invitationData.event.title}
           </h2>
 
-          <h3
-            className="
-              mt-2
-              text-2xl
-              text-[#2f9da3]
-            "
-          >
-            {invitationData.bride.firstName} &{" "}
-            {invitationData.groom.firstName}
-          </h3>
-
           <div className="mt-20">
             <p className="uppercase tracking-[3px] text-xs text-[#8b7b68]">
               Tarikh

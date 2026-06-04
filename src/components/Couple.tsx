@@ -8,64 +8,23 @@ export default function Couple() {
       className="
         relative
         overflow-hidden
+
         min-h-screen
 
-        bg-gradient-to-b
-        from-[#ffffff]
-        via-[#f8fcff]
-        to-[#fdfdfd]
+        bg-[#f8fcff]
 
         px-6
         py-24
       "
     >
-      {/* Decorative Background */}
-      <div
-        className="
-          absolute
-          top-0
-          left-0
-
-          w-64
-          h-64
-
-          rounded-full
-
-          bg-[#dcefff]
-
-          blur-3xl
-
-          opacity-30
-        "
-      />
-
-      <div
-        className="
-          absolute
-          bottom-0
-          right-0
-
-          w-64
-          h-64
-
-          rounded-full
-
-          bg-[#f8dce8]
-
-          blur-3xl
-
-          opacity-30
-        "
-      />
-
       <AnimatedSection>
-        <div className="max-w-4xl mx-auto text-center relative z-10">
+        <div className="max-w-5xl mx-auto text-center">
           <p
             className="
               uppercase
               tracking-[4px]
               text-sm
-              text-[#6d6258]
+              text-[#8b7b68]
             "
           >
             Pasangan
@@ -73,24 +32,30 @@ export default function Couple() {
 
           <h2
             className="
-              mt-4
-              text-[56px]
+              mt-5
+              text-[60px]
+              leading-tight
               text-[#1f6f75]
             "
             style={{
               fontFamily: "Great Vibes",
             }}
           >
-            {invitationData.bride.firstName} &{" "}
+            {invitationData.bride.firstName}
+            <br />
+            &
+            <br />
             {invitationData.groom.firstName}
           </h2>
 
           <p
             className="
-              mt-6
-              max-w-xl
+              mt-8
+
+              max-w-2xl
               mx-auto
-              leading-8
+
+              leading-9
               text-gray-600
             "
           >
@@ -99,16 +64,38 @@ export default function Couple() {
             Encik / Cik ke majlis pertunangan kami.
           </p>
 
-          {/* Bride */}
-          <div className="mt-20">
-            <p className="uppercase tracking-[3px] text-xs text-[#8b7b68]">
-              Pihak Perempuan
+          {/* Bride Card */}
+          <div
+            className="
+              mt-16
+
+              rounded-[35px]
+
+              bg-white
+
+              p-8
+
+              shadow-xl
+            "
+          >
+            <p
+              className="
+                uppercase
+                tracking-[3px]
+                text-xs
+
+                text-[#8b7b68]
+              "
+            >
+              Bakal Pengantin Perempuan
             </p>
 
             <h3
               className="
                 mt-5
-                text-[42px]
+
+                text-[38px]
+
                 text-[#1f6f75]
               "
               style={{
@@ -118,25 +105,25 @@ export default function Couple() {
               {invitationData.bride.fullName}
             </h3>
 
-            <div className="mt-8 space-y-2">
+            <div className="mt-6">
               <p className="text-gray-500">
                 Anak kepada
               </p>
 
-              <p className="font-medium">
+              <p className="mt-3 font-semibold">
                 {invitationData.bride.father}
               </p>
 
-              <p>&</p>
+              <p className="my-2">&</p>
 
-              <p className="font-medium">
+              <p className="font-semibold">
                 {invitationData.bride.mother}
               </p>
             </div>
           </div>
 
           {/* Divider */}
-          <div className="my-20">
+          <div className="my-12">
             <span
               className="
                 text-[70px]
@@ -150,16 +137,36 @@ export default function Couple() {
             </span>
           </div>
 
-          {/* Groom */}
-          <div>
-            <p className="uppercase tracking-[3px] text-xs text-[#8b7b68]">
-              Pihak Lelaki
+          {/* Groom Card */}
+          <div
+            className="
+              rounded-[35px]
+
+              bg-white
+
+              p-8
+
+              shadow-xl
+            "
+          >
+            <p
+              className="
+                uppercase
+                tracking-[3px]
+                text-xs
+
+                text-[#8b7b68]
+              "
+            >
+              Bakal Pengantin Lelaki
             </p>
 
             <h3
               className="
                 mt-5
-                text-[42px]
+
+                text-[38px]
+
                 text-[#1f6f75]
               "
               style={{
@@ -169,18 +176,18 @@ export default function Couple() {
               {invitationData.groom.fullName}
             </h3>
 
-            <div className="mt-8 space-y-2">
+            <div className="mt-6">
               <p className="text-gray-500">
                 Anak kepada
               </p>
 
-              <p className="font-medium">
+              <p className="mt-3 font-semibold">
                 {invitationData.groom.father}
               </p>
 
-              <p>&</p>
+              <p className="my-2">&</p>
 
-              <p className="font-medium">
+              <p className="font-semibold">
                 {invitationData.groom.mother}
               </p>
             </div>
