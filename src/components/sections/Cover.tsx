@@ -2,13 +2,13 @@ import { motion, useScroll, useTransform } from "framer-motion";
 
 import logo from "../assets/logo.png";
 
-import FloatingPetals from "./FloatingPetals";
-import CoverScene from "./cover/CoverScene";
-import ShimmerLogo from "./cover/ShimmerLogo";
-import ShimmerText from "./cover/ShimmerText";
-import SparkleParticles from "./cover/SparkleParticles";
+import FloatingPetals from "../shared/FloatingPetals";
+import CoverScene from "../cover/CoverScene";
+import ShimmerLogo from "../cover/ShimmerLogo";
+import ShimmerText from "../cover/ShimmerText";
+import SparkleParticles from "../cover/SparkleParticles";
 
-import { invitationData } from "../data/invitationData";
+import { invitationData } from "../../data/invitationData";
 
 interface CoverProps {
   onOpen: () => void;

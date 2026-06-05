@@ -1,5 +1,5 @@
-import { invitationData } from "../data/invitationData";
-import AnimatedSection from "./AnimatedSection";
+import { invitationData } from "../../data/invitationData";
+import AnimatedSection from "../shared/AnimatedSection";
 
 export default function EventDetails() {
   return (

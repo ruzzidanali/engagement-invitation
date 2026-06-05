@@ -1,13 +1,13 @@
 import { useState } from "react";
 
-import Cover from "./components/Cover";
-import Couple from "./components/Couple";
-import EventDetails from "./components/EventDetails";
-import Countdown from "./components/Countdown";
-import MusicPlayer from "./components/MusicPlayer";
-import SectionDivider from "./components/SectionDivider";
-import Location from "./components/Location";
-import Closing from "./components/Closing";
+import Cover from "./components/sections/Cover";
+import Couple from "./components/sections/Couple";
+import EventDetails from "./components/sections/EventDetails";
+import Countdown from "./components/sections/Countdown";
+import MusicPlayer from "./components/shared/MusicPlayer";
+import SectionDivider from "./components/shared/SectionDivider";
+import Location from "./components/sections/Location";
+import Closing from "./components/sections/Closing";
 
 function App() {
   const [opened, setOpened] = useState(false);

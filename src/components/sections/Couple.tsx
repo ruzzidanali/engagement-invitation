@@ -1,4 +1,4 @@
-import { invitationData } from "../data/invitationData";
+import { invitationData } from "../../data/invitationData";
 import { motion } from "framer-motion";
 // import AnimatedSection from "./AnimatedSection";
 

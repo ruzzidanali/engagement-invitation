@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { invitationData } from "../data/invitationData";
-import AnimatedSection from "./AnimatedSection";
+import { invitationData } from "../../data/invitationData";
+import AnimatedSection from "../shared/AnimatedSection";
 
 export default function Countdown() {
   const targetDate = new Date(
