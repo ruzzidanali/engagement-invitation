@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-import music from "../assets/music/music.mp3";
+import music from "../../assets/music/music.mp3";
 
 interface MusicPlayerProps {
   opened: boolean;

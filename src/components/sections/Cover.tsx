@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 
-import logo from "../assets/logo.png";
+import logo from "../../assets/logo/logo.png";
 
 import FloatingPetals from "../shared/FloatingPetals";
 import CoverScene from "../cover/CoverScene";
@@ -24,15 +24,24 @@ export default function Cover({ onOpen }: CoverProps) {
   const handleOpenInvitation = () => {
     onOpen();
 
-    const section = document.getElementById("couple");
+    // const section = document.getElementById("couple");
 
-    section?.scrollIntoView({
-      behavior: "smooth",
-    });
+    // section?.scrollIntoView({
+    //   behavior: "smooth",
+    // });
   };
 
   return (
-    <section className="relative min-h-screen overflow-hidden">
+    <motion.section
+      exit={{
+        opacity: 0,
+        scale: 1.05,
+      }}
+      transition={{
+        duration: 1.2,
+      }}
+      className="relative min-h-screen overflow-hidden"
+    >
       {/* Animated Scene */}
       <CoverScene />
 
@@ -298,6 +307,6 @@ export default function Cover({ onOpen }: CoverProps) {
           </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

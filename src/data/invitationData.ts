@@ -16,6 +16,8 @@ export const invitationData = {
   event: {
     title: "Majlis Pertunangan",
 
+    venue: "Kediaman Keluarga Pengantin Perempuan",
+
     date: "31 Oktober 2026",
 
     countdownDate: "2026-10-31T14:00:00",
@@ -39,15 +41,31 @@ export const invitationData = {
 
     gmap: "https://maps.app.goo.gl/xf2mRRBzP14hpULWA",
   },
+
+  gift: {
+    accounts: [
+      {
+        bank: "Maybank",
+        accountNumber: "123456789012",
+        accountName: "Siti Nur Husnina Nisa",
+      },
+      {
+        bank: "Bank Islam",
+        accountNumber: "987654321098",
+        accountName: "Muhammad Ruzzidan",
+      },
+    ],
+  },
+
   closing: {
-      title: "Terima Kasih",
+    title: "Terima Kasih",
 
-      message:
-        "Kehadiran dan doa restu daripada pihak tuan/puan amat kami hargai.",
+    message:
+      "Kehadiran dan doa restu daripada pihak tuan/puan amat kami hargai.",
 
-      verse:
-        "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan-pasangan dari jenismu sendiri supaya kamu cenderung dan merasa tenteram kepadanya.",
+    verse:
+      "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan-pasangan dari jenismu sendiri supaya kamu cenderung dan merasa tenteram kepadanya.",
 
-      source: "Surah Ar-Rum : 21",
-    },
+    source: "Surah Ar-Rum : 21",
+  },
 };

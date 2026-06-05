@@ -1,38 +1,20 @@
 import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
 
 import Cover from "./components/sections/Cover";
-import Couple from "./components/sections/Couple";
-import EventDetails from "./components/sections/EventDetails";
-import Countdown from "./components/sections/Countdown";
+import InvitationContent from "./components/InvitationContent";
 import MusicPlayer from "./components/shared/MusicPlayer";
-import SectionDivider from "./components/shared/SectionDivider";
-import Location from "./components/sections/Location";
-import Closing from "./components/sections/Closing";
 
 function App() {
   const [opened, setOpened] = useState(false);
 
   return (
     <>
-      <Cover onOpen={() => setOpened(true)} />
+      <AnimatePresence mode="wait">
+        {!opened && <Cover key="cover" onOpen={() => setOpened(true)} />}
+      </AnimatePresence>
 
-      <Couple />
-
-      <SectionDivider />
-
-      <EventDetails />
-
-      <SectionDivider />
-
-      <Location />
-
-      <SectionDivider />
-
-      <Countdown />
-
-      <SectionDivider />
-
-      <Closing />
+      {opened && <InvitationContent />}
 
       <MusicPlayer opened={opened} />
     </>

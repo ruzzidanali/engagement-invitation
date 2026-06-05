@@ -1,133 +1,196 @@
+import { motion } from "framer-motion";
 import { invitationData } from "../../data/invitationData";
-import AnimatedSection from "../shared/AnimatedSection";
 
 export default function Location() {
-  const { event } = invitationData;
+  const openGoogleMaps = () => {
+    window.open(
+      invitationData.event.gmap,
+      "_blank"
+    );
+  };
+
+  const openWaze = () => {
+    window.open(
+      invitationData.event.waze,
+      "_blank"
+    );
+  };
 
   return (
-    <section
-      id="location"
-      className="
-        min-h-screen
+    <section className="px-6 py-16">
+      <div
+        className="
+          max-w-4xl
+          mx-auto
+          text-center
+        "
+      >
+        {/* Title */}
+        <motion.p
+          initial={{
+            opacity: 0,
+            y: 20,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            duration: 0.8,
+          }}
+          className="
+            uppercase
 
-        bg-gradient-to-b
-        from-[#ffffff]
-        via-[#f8fcff]
-        to-[#fdfdfd]
+            tracking-[4px]
 
-        px-6
-        py-24
-      "
-    >
-      <AnimatedSection>
-        <div className="max-w-5xl mx-auto text-center">
-          <p
+            text-sm
+
+            text-[#8b7b68]
+          "
+        >
+          Lokasi Majlis
+        </motion.p>
+
+        {/* Card */}
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 40,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            duration: 1,
+          }}
+          className="
+            mt-8
+
+            rounded-[35px]
+
+            bg-white
+
+            p-6
+            md:p-8
+
+            shadow-lg
+          "
+        >
+          {/* Map */}
+          {/* <div
             className="
-              uppercase
-              tracking-[4px]
-              text-sm
-              text-[#6d6258]
-            "
-          >
-            Lokasi Majlis
-          </p>
-
-          <h2
-            className="
-              mt-4
-              text-[56px]
-              text-[#1f6f75]
-            "
-            style={{
-              fontFamily: "Great Vibes",
-            }}
-          >
-            Jumpa Di Sini
-          </h2>
-
-          {/* Embedded Map */}
-          <div
-            className="
-              mt-12
-
               overflow-hidden
-              rounded-[30px]
 
-              shadow-xl
+              rounded-3xl
             "
           >
             <iframe
-              title="Location Map"
+              title="Location"
+              src={invitationData.event.embedMap}
               width="100%"
-              height="450"
+              height="320"
               loading="lazy"
-              allowFullScreen
-              src={`https://maps.google.com/maps?q=${event.coordinates.lat},${event.coordinates.lng}&z=16&output=embed`}
+              className="border-0"
             />
-          </div>
+          </div> */}
+
+          {/* Venue */}
+          <h3
+            className="
+              mt-6
+
+              text-2xl
+
+              font-semibold
+
+              text-[#1f6f75]
+            "
+          >
+            {invitationData.event.venue}
+          </h3>
 
           {/* Address */}
-          <div className="mt-10">
-            {event.address.map((line) => (
-              <div key={line} className="text-gray-700 leading-8">
-                {line}
-              </div>
-            ))}
-          </div>
+          <p
+            className="
+              mt-3
+
+              text-gray-600
+
+              leading-7
+            "
+          >
+            {invitationData.event.address}
+          </p>
 
           {/* Buttons */}
           <div
             className="
-              mt-10
+              mt-8
 
               flex
               flex-col
-              gap-4
-
               sm:flex-row
-              sm:justify-center
+
+              gap-3
+
+              justify-center
             "
           >
-            <a
-              href={event.gmap}
-              target="_blank"
-              rel="noreferrer"
+            <button
+              onClick={openGoogleMaps}
               className="
                 rounded-full
-                bg-[#2f9da3]
+
+                bg-[#1f6f75]
+
                 px-8
-                py-4
+                py-3
+
                 text-white
-                shadow-lg
+
+                font-medium
+
+                transition
+
+                hover:scale-105
               "
             >
               Google Maps
-            </a>
+            </button>
 
-            <a
-              href={event.waze}
-              target="_blank"
-              rel="noreferrer"
+            <button
+              onClick={openWaze}
               className="
                 rounded-full
-                border
-                border-[#2f9da3]
 
-                bg-white
+                border
+
+                border-[#1f6f75]
 
                 px-8
-                py-4
+                py-3
 
-                text-[#2f9da3]
+                text-[#1f6f75]
 
-                shadow-lg
+                font-medium
+
+                transition
+
+                hover:scale-105
               "
             >
               Waze
-            </a>
+            </button>
           </div>
-        </div>
-      </AnimatedSection>
+        </motion.div>
+      </div>
     </section>
   );
 }

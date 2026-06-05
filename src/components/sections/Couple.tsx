@@ -1,6 +1,9 @@
-import { invitationData } from "../../data/invitationData";
 import { motion } from "framer-motion";
-// import AnimatedSection from "./AnimatedSection";
+
+import { invitationData } from "../../data/invitationData";
+
+import SectionBackground from "../shared/SectionBackground";
+import InvitationCard from "../shared/InvitationCard";
 
 export default function Couple() {
   return (
@@ -10,138 +13,30 @@ export default function Couple() {
         relative
         overflow-hidden
 
-        min-h-screen
-
-        bg-[#f8fcff]
-
         px-6
-        py-24
+        py-12
       "
     >
-      <div>
-        <div className="max-w-5xl mx-auto text-center">
-          <motion.p
-            initial={{
-              opacity: 0,
-              y: 30,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{
-              once: true,
-              amount: 0.4,
-            }}
-            transition={{
-              duration: 0.8,
-            }}
-            className="
-              uppercase
-              tracking-[4px]
-              text-sm
-            text-[#8b7b68]
-            "
-          >
-            Pasangan
-          </motion.p>
+      <SectionBackground />
 
-          <motion.h2
-            initial={{
-              opacity: 0,
-              scale: 0.9,
-            }}
-            whileInView={{
-              opacity: 1,
-              scale: 1,
-            }}
-            viewport={{
-              once: true,
-            }}
-            transition={{
-              duration: 1,
-              delay: 0.2,
-            }}
-            className="
-              mt-5
-              text-[60px]
-              leading-tight
-              text-[#1f6f75]
-            "
-            style={{
-              fontFamily: "Great Vibes",
-            }}
-          >
-            {invitationData.bride.firstName}
-            <br />
-            &
-            <br />
-            {invitationData.groom.firstName}
-          </motion.h2>
+      <div
+        className="
+          relative
+          z-10
 
-          <motion.p
-            initial={{
-              opacity: 0,
-              y: 30,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{
-              once: true,
-            }}
-            transition={{
-              duration: 0.8,
-              delay: 0.4,
-            }}
-            className="
-              mt-8
-
-              max-w-2xl
-              mx-auto
-
-              leading-9
-              text-gray-600
-            "
-          >
-            Dengan penuh kesyukuran ke hadrat Allah SWT, kami menjemput Dato' /
-            Datin / Tuan / Puan / Encik / Cik ke majlis pertunangan kami.
-          </motion.p>
-
-          {/* Bride Card */}
-          <motion.div
-            initial={{
-              opacity: 0,
-              x: -100,
-            }}
-            whileInView={{
-              opacity: 1,
-              x: 0,
-            }}
-            viewport={{
-              once: true,
-            }}
-            transition={{
-              duration: 1,
-              delay: 0.5,
-            }}
-            className="
-              mt-16
-
-              rounded-[35px]
-
-              bg-white
-
-              p-8
-
-              shadow-xl
-            "
-          >
+          max-w-3xl
+          mx-auto
+        "
+      >
+        {/* Bride Card */}
+        <InvitationCard>
+          <div className="text-center">
             <p
               className="
                 uppercase
+
                 tracking-[3px]
+
                 text-xs
 
                 text-[#8b7b68]
@@ -150,11 +45,12 @@ export default function Couple() {
               Bakal Pengantin Perempuan
             </p>
 
-            <h3
+            <h2
               className="
-                mt-5
+                mt-2
 
-                text-[38px]
+                text-[25px]
+                sm:text-[40px]
 
                 text-[#1f6f75]
               "
@@ -163,67 +59,67 @@ export default function Couple() {
               }}
             >
               {invitationData.bride.fullName}
-            </h3>
+            </h2>
 
-            <div className="mt-6">
-              <p className="text-gray-500">Anak kepada</p>
-
-              <p className="mt-3 font-semibold">
-                {invitationData.bride.father}
+            <div className="mt-3">
+              <p className="text-gray-500 text-[12px]">
+                Anak kepada
               </p>
 
-              <p className="my-2">&</p>
-
-              <p className="font-semibold">{invitationData.bride.mother}</p>
+              <p className="mt-1 text-[15px]">
+                {invitationData.bride.father} & {invitationData.bride.mother}
+              </p>
             </div>
-          </motion.div>
-
-          {/* Divider */}
-          <div className="my-12">
-            <span
-              className="
-                text-[70px]
-                text-[#2f9da3]
-              "
-              style={{
-                fontFamily: "Great Vibes",
-              }}
-            >
-              &
-            </span>
           </div>
+        </InvitationCard>
 
-          {/* Groom Card */}
-          <motion.div
-            initial={{
-              opacity: 0,
-              x: 100,
-            }}
-            whileInView={{
-              opacity: 1,
-              x: 0,
-            }}
-            viewport={{
-              once: true,
-            }}
-            transition={{
-              duration: 1,
-              delay: 1,
-            }}
+        {/* Divider */}
+        <motion.div
+          initial={{
+            opacity: 0,
+          }}
+          whileInView={{
+            opacity: 1,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            duration: 1,
+          }}
+          className="
+            py-8
+
+            flex
+            items-center
+            justify-center
+
+            gap-4
+          "
+        >
+          <div className="w-16 h-px bg-[#d8c7b7]" />
+
+          <span
             className="
-              rounded-[35px]
-
-              bg-white
-
-              p-8
-
-              shadow-xl
+              text-[#8b7b68]
+              text-2xl
             "
           >
+            ♥
+          </span>
+
+          <div className="w-16 h-px bg-[#d8c7b7]" />
+        </motion.div>
+
+        {/* Groom Card */}
+        <InvitationCard>
+          <div className="text-center">
             <p
               className="
                 uppercase
+
                 tracking-[3px]
+
                 text-xs
 
                 text-[#8b7b68]
@@ -232,11 +128,12 @@ export default function Couple() {
               Bakal Pengantin Lelaki
             </p>
 
-            <h3
+            <h2
               className="
-                mt-5
+                mt-2
 
-                text-[38px]
+                text-[25px]
+                sm:text-[40px]
 
                 text-[#1f6f75]
               "
@@ -245,21 +142,20 @@ export default function Couple() {
               }}
             >
               {invitationData.groom.fullName}
-            </h3>
+            </h2>
 
-            <div className="mt-6">
-              <p className="text-gray-500">Anak kepada</p>
-
-              <p className="mt-3 font-semibold">
-                {invitationData.groom.father}
+            <div className="mt-3">
+              <p className="text-gray-500 text-[12px]">
+                Anak kepada
               </p>
 
-              <p className="my-2">&</p>
+              <p className="mt-1 text-[15px]">
+                {invitationData.groom.father} & {invitationData.groom.mother}
+              </p>
 
-              <p className="font-semibold">{invitationData.groom.mother}</p>
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </InvitationCard>
       </div>
     </section>
   );

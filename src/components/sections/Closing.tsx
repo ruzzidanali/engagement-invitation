@@ -1,120 +1,237 @@
-import logo from "../assets/logo.png";
+import { motion } from "framer-motion";
+
+import logo from "../../assets/logo/logo.png";
 import { invitationData } from "../../data/invitationData";
-import AnimatedSection from "../shared/AnimatedSection";
 
 export default function Closing() {
   return (
     <section
-      id="closing"
       className="
-        min-h-screen
-
-        bg-gradient-to-b
-        from-[#ffffff]
-        via-[#f8fcff]
-        to-[#dcefff]
-
         px-6
         py-24
-
-        flex
-        items-center
       "
     >
-      <AnimatedSection>
-        <div className="max-w-3xl mx-auto text-center">
-          <img
-            src={logo}
-            alt="Logo"
-            className="
-              w-20
-              mx-auto
-            "
-          />
+      <div
+        className="
+          max-w-3xl
+          mx-auto
 
-          <h2
+          text-center
+        "
+      >
+        {/* Logo */}
+        <motion.img
+          src={logo}
+          alt="Logo"
+          initial={{
+            opacity: 0,
+            scale: 0.8,
+          }}
+          whileInView={{
+            opacity: 1,
+            scale: 1,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            duration: 1,
+          }}
+          className="
+            w-24
+
+            mx-auto
+          "
+        />
+
+        {/* Title */}
+        <motion.h2
+          initial={{
+            opacity: 0,
+            y: 20,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            duration: 1,
+            delay: 0.1,
+          }}
+          className="
+            mt-8
+
+            text-[52px]
+
+            text-[#1f6f75]
+          "
+          style={{
+            fontFamily: "Great Vibes",
+          }}
+        >
+          {invitationData.closing.title}
+        </motion.h2>
+
+        {/* Message */}
+        <motion.p
+          initial={{
+            opacity: 0,
+            y: 20,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            duration: 1,
+            delay: 0.2,
+          }}
+          className="
+            mt-6
+
+            text-gray-600
+
+            leading-8
+          "
+        >
+          {invitationData.closing.message}
+        </motion.p>
+
+        {/* Verse */}
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 20,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            duration: 1,
+            delay: 0.3,
+          }}
+          className="
+            mt-12
+
+            rounded-[30px]
+
+            bg-white
+
+            p-8
+
+            shadow-lg
+          "
+        >
+          <p
             className="
-              mt-8
-              text-[60px]
+              italic
+
+              leading-8
+
+              text-gray-600
+            "
+          >
+            "{invitationData.closing.verse}"
+          </p>
+
+          <p
+            className="
+              mt-5
+
+              font-semibold
+
+              text-[#1f6f75]
+            "
+          >
+            {invitationData.closing.source}
+          </p>
+        </motion.div>
+
+        {/* Couple Names */}
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 20,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            duration: 1,
+            delay: 0.4,
+          }}
+          className="
+            mt-12
+          "
+        >
+          <h3
+            className="
+              text-[42px]
+
               text-[#1f6f75]
             "
             style={{
               fontFamily: "Great Vibes",
             }}
           >
-            {invitationData.closing.title}
-          </h2>
+            Husnina
+          </h3>
 
           <p
             className="
-              mt-8
-              leading-8
-              text-gray-600
+              my-2
+
+              text-[#8b7b68]
             "
           >
-            {invitationData.closing.message}
+            &
           </p>
 
-          <div
+          <h3
             className="
-              mt-12
+              text-[42px]
 
-              italic
-
-              leading-8
-
-              text-[#2f9da3]
+              text-[#1f6f75]
             "
+            style={{
+              fontFamily: "Great Vibes",
+            }}
           >
-            "{invitationData.closing.verse}"
-          </div>
+            Ruzzidan
+          </h3>
+        </motion.div>
 
-          <p
-            className="
-              mt-4
-              text-sm
-              text-gray-500
-            "
-          >
-            {invitationData.closing.source}
-          </p>
+        {/* Footer */}
+        <p
+          className="
+            mt-16
 
-          <div className="mt-16">
-            <p
-              className="
-                text-[50px]
-                text-[#1f6f75]
-              "
-              style={{
-                fontFamily: "Great Vibes",
-              }}
-            >
-              {invitationData.bride.firstName}
-            </p>
+            text-xs
 
-            <p
-              className="
-                text-xl
-                text-[#8b7b68]
-              "
-            >
-              &
-            </p>
+            tracking-[3px]
 
-            <p
-              className="
-                text-[50px]
-                text-[#1f6f75]
-              "
-              style={{
-                fontFamily: "Great Vibes",
-              }}
-            >
-              {invitationData.groom.firstName}
-            </p>
-          </div>
-        </div>
-      </AnimatedSection>
+            uppercase
+
+            text-gray-400
+          "
+        >
+          Majlis Pertunangan · 31 Oktober 2026
+        </p>
+      </div>
     </section>
   );
 }
