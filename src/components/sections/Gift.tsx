@@ -1,203 +1,248 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
+import { Gift as GiftIcon } from "lucide-react";
+
 import { invitationData } from "../../data/invitationData";
 
-export default function Gift() {
-  const copyToClipboard = async (text: string) => {
-    try {
-      await navigator.clipboard.writeText(text);
+import SectionBackground from "../shared/SectionBackground";
+import InvitationCard from "../shared/InvitationCard";
+// import { text } from "stream/consumers";
 
-      alert("Nombor akaun berjaya disalin.");
-    } catch {
-      alert("Gagal menyalin nombor akaun.");
+export default function Gift() {
+  const [copied, setCopied] = useState("");
+
+  const copyToClipboard = async (
+    accountNumber: string
+  ) => {
+    try {
+      await navigator.clipboard.writeText(
+        accountNumber
+      );
+
+      setCopied(accountNumber);
+
+      setTimeout(() => {
+        setCopied("");
+      }, 2000);
+    } catch (err) {
+      console.error(err);
+
+      const textArea =
+        document.createElement("textarea");
+
+      textArea.value = accountNumber;
+
+      document.body.appendChild(textArea);
+
+      textArea.select();
+
+      document.execCommand("copy");
+
+      document.body.removeChild(textArea);
+
+      setCopied(accountNumber);
+
+      setTimeout(() => {
+        setCopied("");
+      }, 2000);
     }
   };
 
   return (
-    <section className="px-6 py-16">
+    <section
+      className="
+        relative
+        overflow-hidden
+
+        px-6
+        py-12
+      "
+    >
+      <SectionBackground />
+
       <div
         className="
+          relative
+          z-10
+
           max-w-4xl
           mx-auto
-          text-center
         "
       >
-        {/* Title */}
-        <motion.p
-          initial={{
-            opacity: 0,
-            y: 20,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            duration: 0.8,
-          }}
-          className="
-            uppercase
+        <InvitationCard>
+          {/* Icon */}
+          <motion.div
+            initial={{
+              opacity: 0,
+              scale: 0.8,
+            }}
+            whileInView={{
+              opacity: 1,
+              scale: 1,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 0.8,
+            }}
+            className="text-center"
+          >
+            <div className="flex justify-center">
+              <GiftIcon
+                size={48}
+                strokeWidth={1.5}
+                className="text-[#1f6f75]"
+              />
+            </div>
 
-            tracking-[4px]
+            <p
+              className="
+                mt-4
 
-            text-sm
+                uppercase
 
-            text-[#8b7b68]
-          "
-        >
-          Hadiah
-        </motion.p>
+                tracking-[4px]
 
-        <motion.h2
-          initial={{
-            opacity: 0,
-            y: 20,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            duration: 1,
-          }}
-          className="
-            mt-3
+                text-xs
 
-            text-[42px]
+                text-[#8b7b68]
+              "
+            >
+              Tanda kasih
+            </p>
 
-            text-[#1f6f75]
-          "
-          style={{
-            fontFamily: "Great Vibes",
-          }}
-        >
-          Tanda Kasih
-        </motion.h2>
+            <h2
+              className="
+                mt-4
 
-        <p
-          className="
-            mt-4
+                text-[42px]
+                sm:text-[52px]
 
-            text-gray-600
+                text-[#1f6f75]
+              "
+              style={{
+                fontFamily: "Great Vibes",
+              }}
+            >
+              Hadiah
+            </h2>
 
-            max-w-xl
-            mx-auto
+            <p
+              className="
+                mt-4
 
-            leading-7
-          "
-        >
-          Kehadiran dan doa restu anda sudah cukup bermakna.
-          Namun sekiranya ingin memberikan tanda kasih,
-          anda boleh menggunakan maklumat berikut.
-        </p>
+                max-w-2xl
+                mx-auto
 
-        {/* Accounts */}
-        <div
-          className="
-            mt-10
+                leading-8
 
-            grid
-            gap-5
-          "
-        >
-          {invitationData.gift.accounts.map(
-            (account, index) => (
-              <motion.div
+                text-gray-600
+              "
+            >
+              Kehadiran dan doa restu anda sudah cukup bermakna. Namun sekiranya
+              ingin memberikan tanda kasih, anda boleh menggunakan maklumat
+              berikut.
+            </p>
+          </motion.div>
+
+          {/* Divider */}
+          <div
+            className="
+              mx-auto
+              my-8
+
+              h-px
+              w-24
+
+              bg-[#2f9da3]/30
+            "
+          />
+
+          {/* Accounts */}
+          <div className="space-y-6">
+            {invitationData.gift.accounts.map((account, index) => (
+              <div
                 key={index}
-                initial={{
-                  opacity: 0,
-                  y: 30,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                viewport={{
-                  once: true,
-                }}
-                transition={{
-                  duration: 0.8,
-                }}
                 className="
-                  rounded-[30px]
+                    rounded-[24px]
 
-                  bg-white
+                    border
+                    border-[#e6eef0]
 
-                  p-8
+                    bg-[#f8fcff]
 
-                  shadow-lg
-                "
+                    p-6
+                  "
               >
                 <h3
                   className="
-                    text-xl
+                      text-xl
 
-                    font-semibold
+                      font-semibold
 
-                    text-[#1f6f75]
-                  "
+                      text-[#1f6f75]
+                    "
                 >
                   {account.bank}
                 </h3>
 
                 <p
                   className="
-                    mt-4
+                      mt-4
 
-                    text-2xl
+                      text-2xl
 
-                    font-bold
+                      font-bold
 
-                    tracking-wider
-                  "
+                      tracking-wider
+
+                      tex-[#1f6f75]
+                    "
                 >
                   {account.accountNumber}
                 </p>
 
                 <p
                   className="
-                    mt-2
+                      mt-2
 
-                    text-gray-500
-                  "
+                      text-gray-600
+                    "
                 >
                   {account.accountName}
                 </p>
 
                 <button
-                  onClick={() =>
-                    copyToClipboard(
-                      account.accountNumber
-                    )
-                  }
+                  onClick={() => copyToClipboard(account.accountNumber)}
                   className="
-                    mt-6
+                      mt-6
 
-                    rounded-full
+                      rounded-full
 
-                    bg-[#1f6f75]
+                      bg-[#1f6f75]
 
-                    px-6
-                    py-3
+                      px-6
+                      py-3
 
-                    text-white
+                      text-white
 
-                    transition
+                      font-medium
 
-                    hover:scale-105
-                  "
+                      transition-all
+                      duration-300
+
+                      hover:scale-105
+                    "
                 >
-                  Salin Nombor Akaun
+                  {copied === account.accountNumber
+                    ? "Copied ✓"
+                    : "Copy Account Number"}
                 </button>
-              </motion.div>
-            )
-          )}
-        </div>
+              </div>
+            ))}
+          </div>
+        </InvitationCard>
       </div>
     </section>
   );

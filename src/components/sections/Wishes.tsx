@@ -1,161 +1,305 @@
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { MessageCircleHeart } from "lucide-react";
 
-const wishes = [
-  {
-    name: "Ahmad Farhan",
-    attendance: "Hadir",
-    message:
-      "Tahniah atas pertunangan kalian. Semoga dipermudahkan segala urusan sehingga ke jinjang pelamin.",
-  },
-  {
-    name: "Nurul Ain",
-    attendance: "Hadir",
-    message:
-      "Semoga berbahagia dan sentiasa dalam rahmat Allah SWT.",
-  },
-  {
-    name: "Hakim",
-    attendance: "Mungkin",
-    message:
-      "InsyaAllah akan cuba hadir. Tahniah buat kedua-dua keluarga.",
-  },
-];
+import { supabase } from "../../lib/supabase";
+
+import SectionBackground from "../shared/SectionBackground";
+import InvitationCard from "../shared/InvitationCard";
+
+interface Wish {
+  id: number;
+  name: string;
+  attendance: string;
+  guests: string;
+  message: string;
+  created_at: string;
+}
 
 export default function Wishes() {
+  const [wishes, setWishes] = useState<Wish[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    const fetchWishes = async () => {
+      const { data, error } = await supabase
+        .from("wishes")
+        .select("*")
+        .order("created_at", {
+          ascending: false,
+        });
+
+      if (!error && data) {
+        setWishes(data);
+      }
+
+      setLoading(false);
+    };
+
+    fetchWishes();
+
+    const channel = supabase
+      .channel("wishes")
+      .on(
+        "postgres_changes",
+        {
+          event: "INSERT",
+          schema: "public",
+          table: "wishes",
+        },
+        () => {
+          fetchWishes();
+        },
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (paused) return;
+
+    if (wishes.length < 4) return;
+
+    const container = scrollRef.current;
+
+    if (!container) return;
+
+    const interval = setInterval(() => {
+      container.scrollTop += 1;
+
+      const halfway = container.scrollHeight / 2;
+
+      if (container.scrollTop >= halfway) {
+        container.scrollTop = 0;
+      }
+    }, 20);
+
+    return () => clearInterval(interval);
+  }, [paused, wishes]);
+
+  const displayWishes = [...wishes, ...wishes];
+
   return (
-    <section className="px-6 py-16">
+    <section
+      className="
+        relative
+        overflow-hidden
+
+        px-6
+        py-12
+      "
+    >
+      <SectionBackground />
+
       <div
         className="
+          relative
+          z-10
+
           max-w-4xl
           mx-auto
         "
       >
-        {/* Title */}
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 20,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-          }}
-          className="text-center"
-        >
-          <p
-            className="
-              uppercase
+        <InvitationCard>
+          {/* Header */}
+          <div className="text-center">
+            <div className="flex justify-center">
+              <MessageCircleHeart
+                size={48}
+                strokeWidth={1.5}
+                className="text-[#1f6f75]"
+              />
+            </div>
 
-              tracking-[4px]
-
-              text-sm
-
-              text-[#8b7b68]
-            "
-          >
-            Ucapan
-          </p>
-
-          <h2
-            className="
-              mt-3
-
-              text-[42px]
-
-              text-[#1f6f75]
-            "
-            style={{
-              fontFamily: "Great Vibes",
-            }}
-          >
-            Doa & Ucapan
-          </h2>
-        </motion.div>
-
-        {/* Wish Cards */}
-        <div className="mt-10 space-y-5">
-          {wishes.map((wish, index) => (
-            <motion.div
-              key={index}
-              initial={{
-                opacity: 0,
-                y: 30,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: 0.6,
-              }}
+            <p
               className="
-                rounded-[30px]
+                mt-4
 
-                bg-white
+                uppercase
 
-                p-6
+                tracking-[4px]
 
-                shadow-lg
+                text-xs
+
+                text-[#8b7b68]
               "
             >
-              <div
-                className="
-                  flex
+              Doa & Ucapan
+            </p>
 
-                  items-center
-                  justify-between
+            <h2
+              className="
+                mt-4
 
-                  gap-4
+                text-[42px]
+                sm:text-[52px]
+
+                text-[#1f6f75]
+              "
+              style={{
+                fontFamily: "Great Vibes",
+              }}
+            >
+              Ucapan Tetamu
+            </h2>
+
+            <p
+              className="
+                mt-4
+
+                max-w-xl
+                mx-auto
+
+                leading-8
+
+                text-gray-600
+              "
+            >
+              Terima kasih atas doa dan ucapan yang diberikan kepada kami.
+            </p>
+          </div>
+
+          {/* Divider */}
+          <div
+            className="
+              mx-auto
+              my-8
+
+              h-px
+              w-24
+
+              bg-[#2f9da3]/30
+            "
+          />
+
+          {/* Loading */}
+          {loading && (
+            <div className="text-center">
+              <p className="text-gray-500">Memuatkan ucapan...</p>
+            </div>
+          )}
+
+          {/* Empty */}
+          {!loading && wishes.length === 0 && (
+            <div className="text-center">
+              <p className="text-gray-500">Belum ada ucapan diterima.</p>
+            </div>
+          )}
+
+          {/* Wishes */}
+          {!loading && wishes.length > 0 && (
+            <div
+              ref={scrollRef}
+              onMouseEnter={() => setPaused(true)}
+              onMouseLeave={() => setPaused(false)}
+              onTouchStart={() => setPaused(true)}
+              onTouchEnd={() => setPaused(false)}
+              className="
+                  mt-8
+
+                  max-h-[500px]
+
+                  overflow-y-auto
+
+                  hide-scrollbar
+
+                  space-y-5
+
+                  pr-2
                 "
-              >
-                <h3
+            >
+              {displayWishes.map((wish, index) => (
+                <motion.div
+                  key={`${wish.id}-${index}`}
+                  initial={{
+                    opacity: 0,
+                    y: 20,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  viewport={{
+                    once: true,
+                  }}
+                  transition={{
+                    duration: 0.5,
+                  }}
                   className="
-                    font-semibold
+                        rounded-[24px]
 
-                    text-[#1f6f75]
-                  "
+                        border
+                        border-[#e6eef0]
+
+                        bg-[#f8fcff]
+
+                        p-6
+                      "
                 >
-                  {wish.name}
-                </h3>
+                  <div
+                    className="
+                          flex
 
-                <span
-                  className="
-                    rounded-full
+                          items-center
+                          justify-between
 
-                    bg-[#eef6f8]
+                          gap-4
 
-                    px-4
-                    py-1
+                          flex-wrap
+                        "
+                  >
+                    <div>
+                      <h3
+                        className="
+                              font-semibold
 
-                    text-xs
+                              text-[#1f6f75]
+                            "
+                      >
+                        {wish.name}
+                      </h3>
 
-                    text-[#1f6f75]
-                  "
-                >
-                  {wish.attendance}
-                </span>
-              </div>
+                      <p
+                        className="
+                              text-sm
 
-              <p
-                className="
-                  mt-4
+                              text-gray-500
+                            "
+                      >
+                        {new Date(wish.created_at).toLocaleDateString("ms-MY", {
+                          day: "numeric",
+                          month: "long",
+                          year: "numeric",
+                        })}
+                      </p>
+                    </div>
+                  </div>
 
-                  leading-7
+                  {wish.message && (
+                    <p
+                      className="
+                            mt-4
 
-                  text-gray-600
-                "
-              >
-                {wish.message}
-              </p>
-            </motion.div>
-          ))}
-        </div>
+                            leading-7
+
+                            text-gray-600
+                          "
+                    >
+                      {wish.message}
+                    </p>
+                  )}
+                </motion.div>
+              ))}
+            </div>
+          )}
+        </InvitationCard>
       </div>
     </section>
   );

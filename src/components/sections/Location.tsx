@@ -1,5 +1,10 @@
 import { motion } from "framer-motion";
+import { MapPinned } from "lucide-react";
+
 import { invitationData } from "../../data/invitationData";
+
+import SectionBackground from "../shared/SectionBackground";
+import InvitationCard from "../shared/InvitationCard";
 
 export default function Location() {
   const openGoogleMaps = () => {
@@ -17,130 +22,141 @@ export default function Location() {
   };
 
   return (
-    <section className="px-6 py-16">
+    <section
+      className="
+        relative
+        overflow-hidden
+        
+        px-6
+        py-12
+      "
+    >
+      <SectionBackground />
+
       <div
         className="
+          relative
+          z-10
+          
           max-w-4xl
           mx-auto
-          text-center
         "
       >
-        {/* Title */}
-        <motion.p
-          initial={{
-            opacity: 0,
-            y: 20,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            duration: 0.8,
-          }}
-          className="
-            uppercase
+        <InvitationCard>
+          {/* Icon */}
+          <motion.div
+            initial={{
+              opacity: 0,
+              scale: 0.8,
+            }}
+            whileInView={{
+              opacity: 1,
+              scale: 1,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 0.8,
+            }}
+            className="text-center"
+          >
+            <div className="flex justify-center">
+              <MapPinned
+                size={48}
+                strokeWidth={1.5}
+                className="text-[#1f6f75]"
+              />
+            </div>
 
-            tracking-[4px]
+            <p
+              className="
+                mt-4
+                
+                uppercase
 
-            text-sm
+                tracking-[4px]
 
-            text-[#8b7b68]
-          "
-        >
-          Lokasi Majlis
-        </motion.p>
+                text-xs
 
-        {/* Card */}
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 40,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-          }}
-          transition={{
-            duration: 1,
-          }}
-          className="
-            mt-8
+                text-[#8b7b68]
+              "
+            >
+              Lokasi Majlis
+            </p>
+          </motion.div>
 
-            rounded-[35px]
+          {/* Divider */}
+          <div
+            className="
+              mx-auto
+              my-8
 
-            bg-white
+              h-px
+              w-24
 
-            p-6
-            md:p-8
+              bg-[#2f9da3]/30
+            "
+          />
 
-            shadow-lg
-          "
-        >
           {/* Map */}
-          {/* <div
+          <div
             className="
               overflow-hidden
 
-              rounded-3xl
+              rounded-[24px]
+
+              shadow-md
             "
           >
             <iframe
-              title="Location"
-              src={invitationData.event.embedMap}
-              width="100%"
-              height="320"
-              loading="lazy"
-              className="border-0"
-            />
-          </div> */}
-
-          {/* Venue */}
-          <h3
-            className="
-              mt-6
-
-              text-2xl
-
-              font-semibold
-
-              text-[#1f6f75]
-            "
-          >
-            {invitationData.event.venue}
-          </h3>
-
-          {/* Address */}
+            title="Location Map"
+            src={invitationData.event.embedMap}
+            width="100%"
+            height="380"
+            loading="lazy"
+            className="border-0"
+          />
+          </div>
+          {/* Helper Text */}
           <p
             className="
-              mt-3
+              mt-5
+              
+              text-center
 
-              text-gray-600
+              text-sm
 
-              leading-7
-            "
+              text-gray-500
+            " 
           >
-            {invitationData.event.address}
+            Klik Google Maps atau Waze untuk navigasi terus ke lokasi Majlis.
           </p>
+
+          {/* Divider */}
+          <div
+            className="
+              mx-auto
+              my-8
+              
+              h-px
+              w-24
+
+              bg-[#2f9da3]/30
+            "
+          />
 
           {/* Buttons */}
           <div
             className="
-              mt-8
-
               flex
+
               flex-col
               sm:flex-row
 
-              gap-3
-
               justify-center
+
+              gap-3
             "
           >
             <button
@@ -157,7 +173,8 @@ export default function Location() {
 
                 font-medium
 
-                transition
+                transition-all
+                duration-300
 
                 hover:scale-105
               "
@@ -181,7 +198,8 @@ export default function Location() {
 
                 font-medium
 
-                transition
+                transition-all
+                duration-300
 
                 hover:scale-105
               "
@@ -189,7 +207,7 @@ export default function Location() {
               Waze
             </button>
           </div>
-        </motion.div>
+        </InvitationCard>
       </div>
     </section>
   );

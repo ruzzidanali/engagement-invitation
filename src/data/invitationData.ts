@@ -33,9 +33,12 @@ export const invitationData = {
     ],
 
     coordinates: {
-      lat: 2.588938,
-      lng: 102.1012798,
+      lat: 2.5890116854574328,
+      lng: 102.10126907116509,
     },
+
+    embedMap:
+      "https://maps.google.com/maps?q=2.5890116854574328,102.10126907116509&z=17&output=embed",
 
     waze: "https://ul.waze.com/ul?place=EjoyMDEsIEphbGFuIFRzciA0OCwgNzEzMDAgUmVtYmF1LCBOZWdlcmkgU2VtYmlsYW4sIE1hbGF5c2lhIjESLwoUChIJUZbn7kUIzjER9OWCYfl5EQcQyQEqFAoSCW2myO5FCM4xEQrYf5uID9yK&ll=2.58893800%2C102.10127980&navigate=yes&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location",
 
