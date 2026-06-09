@@ -84,7 +84,10 @@ export default function Wishes() {
     return () => clearInterval(interval);
   }, [paused, wishes]);
 
-  const displayWishes = [...wishes, ...wishes];
+  const displayWishes = 
+    wishes.length > 4
+      ? [...wishes, ...wishes]
+      : wishes;
 
   return (
     <section
