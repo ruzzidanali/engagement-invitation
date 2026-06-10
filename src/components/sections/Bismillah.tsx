@@ -107,30 +107,6 @@ export default function Bismillah() {
           بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
         </motion.p>
 
-        {/* Bismillah */}
-        {/* <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{
-            duration: 0.8,
-            delay: 0.2,
-          }}
-          className="
-            mt-4
-
-            text-[42px]
-            sm:text-[54px]
-
-            text-[#1f6f75]
-          "
-          style={{
-            fontFamily: "Great Vibes",
-          }}
-        >
-          Bismillahirrahmanirrahim
-        </motion.h2> */}
-
         {/* Subtitle */}
         <motion.h3
           initial={{ opacity: 0, y: 20 }}
@@ -141,7 +117,7 @@ export default function Bismillah() {
             delay: 0.4,
           }}
           className="
-            mt-1
+            mt-5
 
             text-[28px]
             sm:text-[34px]
@@ -169,7 +145,7 @@ export default function Bismillah() {
             delay: 0.6,
           }}
           className="
-            mt-3
+            mt-5
 
             max-w-2xl
             mx-auto

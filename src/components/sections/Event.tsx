@@ -7,6 +7,9 @@ import { useCountdown } from "../../hooks/useCountdown";
 import SectionBackground from "../shared/SectionBackground";
 import InvitationCard from "../shared/InvitationCard";
 
+import { CalendarPlus } from "lucide-react";
+import { downloadCalendar} from "../../utils/calendar";
+
 export default function Event() {
   const countdown = useCountdown(
     invitationData.event.countdownDate
@@ -219,6 +222,33 @@ export default function Event() {
 
           <div className="mt-6">
             <CountdownGrid countdown={countdown} />
+            <div className="mt-8 text-center">
+              <button
+                onClick={downloadCalendar}
+                className="
+                  inline-flex
+                  items-center
+                  gap-3
+
+                  rounded-full
+
+                  bg-[#1f6f75]
+
+                  px-7
+                  py-3
+
+                  text-white
+
+                  transition-all
+                  duration-300
+
+                  hover:scale-105
+                "
+              >
+                <CalendarPlus size={20} />
+                Tambah ke Kalendar
+              </button>
+            </div>
           </div>
         </InvitationCard>
       </div>

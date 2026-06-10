@@ -5,6 +5,7 @@ import { invitationData } from "../../data/invitationData";
 
 import SectionBackground from "../shared/SectionBackground";
 import InvitationCard from "../shared/InvitationCard";
+import QRCode from "react-qr-code";
 
 export default function Location() {
   const openGoogleMaps = () => {
@@ -206,6 +207,62 @@ export default function Location() {
             >
               Waze
             </button>
+            <div
+              className="
+                mt-10
+
+                text-center
+              "
+            >
+              <p
+                className="
+                  uppercase
+
+                  tracking-[3px]
+
+                  text-xs
+
+                  text-[#8b7b68]
+                "
+              >
+                Atau Imbas QR
+              </p>
+
+              <div
+                className="
+                  mt-5
+
+                  inline-block
+
+                  rounded-[24px]
+
+                  bg-white
+
+                  p-4
+
+                  shadow-lg
+                "
+              >
+                <QRCode
+                  value={invitationData.event.gmap}
+                  size={160}
+                  bgColor="transparent"
+                  fgColor="#1f6f75"
+                />
+              </div>
+
+              <p
+                className="
+                  mt-4
+
+                  text-sm
+
+                  text-gray-500
+                "
+              >
+                Imbas menggunakan kamera telefon untuk membuka lokasi
+              </p>
+            </div>
           </div>
         </InvitationCard>
       </div>

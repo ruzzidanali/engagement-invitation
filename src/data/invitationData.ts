@@ -14,13 +14,17 @@ export const invitationData = {
   },
 
   event: {
-    title: "Majlis Pertunangan",
+    title: "Majlis Perkahwinan",
 
     venue: "Kediaman Keluarga Pengantin Perempuan",
 
     date: "31 Oktober 2026",
 
     countdownDate: "2026-10-31T14:00:00",
+
+    startDate: "2026-10-31T14:00:00",
+
+    endDate: "2026-10-31T16:00:00",
 
     time: "2.00 PM - 4.00 PM",
 

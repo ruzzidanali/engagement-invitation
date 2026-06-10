@@ -71,3 +71,67 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+.particle {
+  position: fixed;
+  bottom: -30px;
+
+  border-radius: 9999px;
+
+  pointer-events: none;
+
+  opacity: 0.5;
+
+  z-index: 5;
+
+  animation-name: floatingDust;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+
+  filter: blur(0.5px);
+}
+
+.particle:nth-child(4n) {
+  background: #e6f5ff;
+  box-shadow: 0 0 10px rgba(220, 239, 255, 0.6);
+}
+
+.particle:nth-child(4n + 1) {
+  background: #fde9f1;
+  box-shadow: 0 0 10px rgba(248, 220, 232, 0.6);
+}
+
+.particle:nth-child(4n + 2) {
+  background: #d7eadf;
+  box-shadow: 0 0 10px rgba(183, 216, 195, 0.6);
+}
+
+.particle:nth-child(4n + 3) {
+  background: #52bcc2;
+  box-shadow: 0 0 12px rgba(47, 157, 163, 0.5);
+}
+
+@keyframes floatingDust {
+  0% {
+    transform: translateY(0) translateX(0) scale(0.8);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  30% {
+    transform: translateY(-30vh) translateX(25px) scale(1);
+  }
+
+  60% {
+    transform: translateY(-65vh) translateX(-25px) scale(1.2);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translateY(-120vh) translateX(20px) scale(0.7);
+    opacity: 0;
+  }
+}
