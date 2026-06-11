@@ -97,7 +97,8 @@ export default function RSVP() {
         overflow-hidden
 
         px-6
-        py-12
+        py-16
+        sm:py-20
       "
     >
       <SectionBackground />
@@ -128,9 +129,10 @@ export default function RSVP() {
 
                 uppercase
 
-                tracking-[4px]
+                tracking-[6px]
 
-                text-xs
+                text-[11px]
+                font-medium
 
                 text-[#8b7b68]
               "
@@ -158,7 +160,8 @@ export default function RSVP() {
               className="
                 mt-4
 
-                max-w-xl
+                max-w-2xl
+                tracking-[0.2px]
                 mx-auto
 
                 leading-8
@@ -367,9 +370,13 @@ export default function RSVP() {
                   transition-all
                   duration-300
 
+                  hover:-translate-y-1
                   hover:scale-105
+                  hover:shadow-[0_0_25px_rgba(47,157,163,0.45)]
 
-                  disabled:opacity-50
+                  active:scale-95
+
+                  cursor-pointer
                 "
               >
                 {loading ? "Menghantar..." : "Hantar Pengesahan"}

@@ -96,7 +96,8 @@ export default function Wishes() {
         overflow-hidden
 
         px-6
-        py-12
+        py-16
+        sm:py-20
       "
     >
       <SectionBackground />
@@ -127,7 +128,9 @@ export default function Wishes() {
 
                 uppercase
 
-                tracking-[4px]
+                tracking-[6px]
+                text-[11px]
+                font-medium 
 
                 text-xs
 
@@ -290,7 +293,9 @@ export default function Wishes() {
                       className="
                             mt-4
 
-                            leading-7
+                            leading-8
+
+                            tracking-[0.2px]
 
                             text-gray-600
                           "

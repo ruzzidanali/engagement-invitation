@@ -29,7 +29,8 @@ export default function Location() {
         overflow-hidden
         
         px-6
-        py-12
+        py-16
+        sm:py-20
       "
     >
       <SectionBackground />
@@ -76,9 +77,10 @@ export default function Location() {
                 
                 uppercase
 
-                tracking-[4px]
+                tracking-[6px]
 
-                text-xs
+                text-[11px]
+                font-medium
 
                 text-[#8b7b68]
               "
@@ -127,6 +129,10 @@ export default function Location() {
               text-center
 
               text-sm
+
+              leading-7
+
+              tracking-[0.2px]
 
               text-gray-500
             " 
@@ -177,7 +183,13 @@ export default function Location() {
                 transition-all
                 duration-300
 
+                hover:-translate-y-1
                 hover:scale-105
+                hover:shadow-[0_10px_25px_rgba(47,157,163,0.35)]
+
+                active:scale-95
+
+                cursor-pointer
               "
             >
               Google Maps
@@ -202,7 +214,13 @@ export default function Location() {
                 transition-all
                 duration-300
 
+                hover:-translate-y-1
                 hover:scale-105
+                hover:shadow-[0_10px_25px_rgba(47,157,163,0.35)]
+
+                active:scale-95
+
+                cursor-pointer
               "
             >
               Waze
@@ -218,9 +236,10 @@ export default function Location() {
                 className="
                   uppercase
 
-                  tracking-[3px]
+                  tracking-[6px]
 
-                  text-xs
+                  text-[11px]
+                  font-medium
 
                   text-[#8b7b68]
                 "

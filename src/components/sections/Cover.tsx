@@ -298,7 +298,12 @@ export default function Cover({ onOpen }: CoverProps) {
                 transition-all
                 duration-300
 
+                hover:-translate-y-1
                 hover:scale-105
+                hover:shadow-[0_10px_25px_rgba(47,157,163,0.35)]
+                active:scale-95
+
+                cursor-pointer
                 "
               >
                 Buka Jemputan

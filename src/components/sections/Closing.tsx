@@ -16,7 +16,8 @@ export default function Closing() {
         overflow-hidden
 
         px-6
-        py-12
+        py-16
+        sm:py-20
       "
     >
       <SectionBackground />
@@ -63,6 +64,13 @@ export default function Closing() {
                 w-24
 
                 mx-auto
+                animate-[floatLogo_4s_ease-in-out_infinite]
+
+                drop-shadow-[0_0_12px_rgba(220,239,255,0.8)]
+                hover:drop-shadow-[0_0_20px_rgba(248,220,232,0.8)]
+
+                transition-all
+                duration-500
               "
             />
 
@@ -70,7 +78,7 @@ export default function Closing() {
               className="
                 mt-4
 
-                tracking-[8px]
+                tracking-[10px]
 
                 font-semibold
 
@@ -103,8 +111,12 @@ export default function Closing() {
 
               text-center
 
-              text-[48px]
-              sm:text-[58px]
+              text-[52px]
+              sm:text-[62px]
+
+              leading-none
+
+              drop-shadow-[0_4px_10px_rgba(47,157,163,0.15)]
 
               text-[#1f6f75]
             "
@@ -139,6 +151,8 @@ export default function Closing() {
               mx-auto
 
               text-center
+
+              tracking-[0.2px]
 
               leading-8
 

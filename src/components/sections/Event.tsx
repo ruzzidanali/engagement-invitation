@@ -22,7 +22,8 @@ export default function Event() {
         overflow-hidden
 
         px-6
-        py-12
+        py-16
+        sm:py-20
       "
     >
       <SectionBackground />
@@ -69,9 +70,10 @@ export default function Event() {
 
                 uppercase
 
-                tracking-[4px]
+                tracking-[6px]
 
-                text-xs
+                text-[11px]
+                font-medium
 
                 text-[#8b7b68]
               "
@@ -102,8 +104,12 @@ export default function Event() {
 
               text-center
 
-              text-[42px]
-              sm:text-[56px]
+              text-[46px]
+              sm:text-[60px]
+
+              leading-none
+
+              drop-shadow-[0_4px_10px_rgba(47,157,163,0.15)]
 
               text-[#1f6f75]
             "
@@ -123,7 +129,9 @@ export default function Event() {
 
               text-lg
 
-              text-gray-700
+              tracking-[0.3px]
+
+              text-gray-600
             "
           >
             {invitationData.event.time}
@@ -148,9 +156,11 @@ export default function Event() {
               className="
                 uppercase
 
-                tracking-[3px]
+                tracking-[6px]
 
-                text-xs
+                text-[11px]
+
+                font-medium
 
                 text-[#8b7b68]
               "
@@ -212,7 +222,9 @@ export default function Event() {
 
               uppercase
 
-              tracking-[3px]
+              tracking-[6px]
+              text-[11px]
+              font-medium
 
               text-[#8b7b68]
             "
@@ -234,15 +246,21 @@ export default function Event() {
 
                   bg-[#1f6f75]
 
-                  px-7
+                  px-8
                   py-3
 
                   text-white
+                  font-medium
 
                   transition-all
                   duration-300
 
+                  hover:-translate-y-1
                   hover:scale-105
+                  hover:shadow-[0_10px_25px_rgba(47,157,163,0.35)]
+                  active:scale-95
+
+                  cursor-pointer
                 "
               >
                 <CalendarPlus size={20} />

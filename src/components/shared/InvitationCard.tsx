@@ -13,59 +13,122 @@ export default function InvitationCard({
     <motion.div
       initial={{
         opacity: 0,
-        y: 30,
+        y: 50,
+        scale: 0.96,
       }}
       whileInView={{
         opacity: 1,
         y: 0,
+        scale: 1,
       }}
       viewport={{
         once: true,
         amount: 0.2,
       }}
       transition={{
-        duration: 0.8,
+        duration: 1,
+        ease: "easeOut",
       }}
       className={`
-        relative
+          relative
 
-        w-full
+          w-full
 
-        rounded-[28px]
+          rounded-[32px]
 
-        bg-white
+          bg-white/92
 
-        px-8
-        py-10
+          px-6
+          py-8
 
-        shadow-[0_8px_30px_rgba(0,0,0,0.08)]
+          sm:px-8
+          sm:py-10
 
-        border
-        border-[#f3ede7]
+          border
+          border-white/80
 
-        overflow-hidden
+          shadow-[0_15px_50px_rgba(47,157,163,0.12)]
 
-        ${className}
-      `}
-    >
-      {/* Top Accent Line */}
-      <div
-        className="
-          absolute
-          top-0
-          left-0
-          right-0
+          backdrop-blur-sm
 
-          h-[4px]
+          overflow-hidden
 
-          bg-gradient-to-r
-          from-[#dcefff]
-          via-[#2f9da3]
-          to-[#f8dce8]
-        "
-      />
+          ${className}
+        `}
+      >
+        {/* Top Gradient Accent */}
+        <div
+          className="
+            absolute
+            top-0
+            left-0
+            right-0
 
-      {children}
-    </motion.div>
+            h-[4px]
+
+            bg-gradient-to-r
+            from-[#dcefff]
+            via-[#2f9da3]
+            to-[#f8dce8]
+          "
+        />
+
+        {/* Soft Background Glow */}
+        <div
+          className="
+            absolute
+
+            -top-24
+            -right-24
+
+            w-48
+            h-48
+
+            rounded-full
+
+            bg-[#dcefff]/50
+
+            blur-3xl
+          "
+        />
+
+        <div
+          className="
+            absolute
+
+            -bottom-24
+            -left-24
+
+            w-48
+            h-48
+
+            rounded-full
+
+            bg-[#f8dce8]/40
+
+            blur-3xl
+          "
+        />
+
+        {/* Inner Light */}
+        <div
+          className="
+            absolute
+
+            inset-0
+
+            rounded-[32px]
+
+            shadow-[inset_0_1px_2px_rgba(255,255,255,0.8)]
+
+            pointer-events-none
+          "
+        />
+
+        {/* Content */}
+        <div className="relative z-10">
+          {children}
+        </div>
+      </motion.div>
   );
 }

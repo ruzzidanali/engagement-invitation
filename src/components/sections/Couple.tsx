@@ -14,7 +14,8 @@ export default function Couple() {
         overflow-hidden
 
         px-6
-        py-12
+        py-16
+        sm:py-20
       "
     >
       <SectionBackground />
@@ -35,9 +36,10 @@ export default function Couple() {
               className="
                 uppercase
 
-                tracking-[3px]
+                tracking-[6px]
 
-                text-xs
+                text-[11px]
+                font-medium
 
                 text-[#8b7b68]
               "
@@ -49,10 +51,14 @@ export default function Couple() {
               className="
                 mt-2
 
-                text-[25px]
-                sm:text-[40px]
+                text-[28px]
+                sm:text-[44px]
+
+                leading-none
 
                 text-[#1f6f75]
+
+                drop-shadow-[0_4px_10px_rgba(47,157,163,0.12)]
               "
               style={{
                 fontFamily: "Cormorant Garamond",
@@ -66,7 +72,7 @@ export default function Couple() {
                 Anak kepada
               </p>
 
-              <p className="mt-1 text-[15px]">
+              <p className="mt-2 text-[15px] tracking-[0.2px] text-gray-700">
                 {invitationData.bride.father} & {invitationData.bride.mother}
               </p>
             </div>
@@ -118,9 +124,10 @@ export default function Couple() {
               className="
                 uppercase
 
-                tracking-[3px]
+                tracking-[6px]
 
-                text-xs
+                text-[11px]
+                font-medium
 
                 text-[#8b7b68]
               "
@@ -132,10 +139,14 @@ export default function Couple() {
               className="
                 mt-2
 
-                text-[25px]
-                sm:text-[40px]
+                text-[28px]
+                sm:text-[44px]
+
+                leading-none
 
                 text-[#1f6f75]
+
+                drop-shadow-[0_4px_10px_rgba(47,157,163,0.12)]
               "
               style={{
                 fontFamily: "Cormorant Garamond",
@@ -149,7 +160,7 @@ export default function Couple() {
                 Anak kepada
               </p>
 
-              <p className="mt-1 text-[15px]">
+              <p className="mt-2 text-[15px] tracking-[0.2px] text-gray-700">
                 {invitationData.groom.father} & {invitationData.groom.mother}
               </p>
 

@@ -13,8 +13,9 @@ export default function Bismillah() {
         overflow-hidden
 
         px-6
-        pt-24
-        pb-12
+        pt-28
+        pb-16
+        sm:pb-20
       "
     >
       <SectionBackground />
@@ -55,6 +56,13 @@ export default function Bismillah() {
 
             w-20
             sm:w-24
+            animate-[floatLogo_4s_ease-in-out_infinite]
+
+            drop-shadow-[0_0_12px_rgba(220,239,255,0.8)]
+            hover:drop-shadow-[0_0_20px_rgba(248,220,232,0.8)]
+
+            transition-all
+            duration-500
         "
         />
 
@@ -122,7 +130,9 @@ export default function Bismillah() {
             text-[28px]
             sm:text-[34px]
 
-            leading-tight
+            leading-8
+
+            tracking-[0.2px]
 
             text-[#8b7b68]
           "
@@ -150,7 +160,9 @@ export default function Bismillah() {
             max-w-2xl
             mx-auto
 
-            leading-5
+            leading-8
+
+            tracking-[0.2px]
 
             text-gray-600
           "
@@ -166,8 +178,10 @@ export default function Bismillah() {
           <InvitationCard>
             <p
               className="
-                text-[13px]
-                leading-5
+                text-[14px]
+                leading-8
+
+                tracking-[0.2px]
 
                 italic
 
