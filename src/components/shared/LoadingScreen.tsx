@@ -3,84 +3,137 @@ import { motion } from "framer-motion";
 import logo from "../../assets/logo/logo.png";
 
 export default function LoadingScreen() {
-    return (
-        <div
-            className="
-                fixed
-                inset-0
+  return (
+    <div
+      className="
+        fixed
+        inset-0
 
-                z-[9999]
+        z-[9999]
 
-                flex
-                flex-col
-                items-center
-                justify-center
+        flex
+        flex-col
+        items-center
+        justify-center
 
-                bg-[#f8fcff]
-            "
-        >
-            <motion.img
-                src={logo}
-                alt="Logo"
-                initial={{
-                    opacity: 0,
-                    scale: 0.8,
-                }}
-                animate={{
-                    opacity: 1,
-                    scale: 1,
-                }}
-                transition={{
-                    duration: 1,
-                }}
-                className="w-28"
-            />
+        bg-gradient-to-b
+        from-[#fdfefe]
+        via-[#eef8fb]
+        to-[#f8fdf9]
+      "
+    >
+      {/* Logo Container */}
+      <div className="relative flex items-center justify-center">
+        {/* Soft Glow */}
+        <motion.div
+          className="
+            absolute
 
-            <motion.p
-                initial={{
-                    opacity: 0,
-                }}
-                animate={{
-                    opacity: 1,
-                }}
-                transition={{
-                    delay: 0.4,
-                }}
-                className="
-                    mt-4
+            w-24
+            h-24
 
-                    tracking-[8px]
+            rounded-full
 
-                    font-semibold
-                    
-                    text-[#1f6f75]
-                "
-            >
-                H & R
-            </motion.p>
+            bg-[#fffaf0]/70
 
-            <motion.div
-                animate={{
-                    opacity: [0.3, 1, 0.3],
-                }}
-                transition={{
-                    duration: 1.5,
-                    repeat: Infinity,
-                }}
-                className="
-                    mt-8
+            blur-2xl
+          "
+          animate={{
+            opacity: [0.3, 0.6, 0.3],
+            scale: [1, 1.08, 1],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
 
-                    text-sm
+        {/* Logo */}
+        <motion.img
+          src={logo}
+          alt="Logo"
+          className="
+            relative
+            z-10
 
-                    tracking-[4px]
+            w-28
 
-                    uppercase
+            select-none
+            pointer-events-none
+          "
+          initial={{
+            opacity: 0,
+            scale: 0.8,
+          }}
+          animate={{
+            opacity: 1,
+            scale: [1, 1.03, 1],
+          }}
+          transition={{
+            opacity: {
+              duration: 1.5,
+            },
+            scale: {
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut",
+            },
+          }}
+        />
+      </div>
 
-                    text-[#8b7b68]
-                "
-            >
-                Loading
-            </motion.div>
-        </div>
-    );
+      {/* Initials */}
+      <motion.p
+        initial={{
+          opacity: 0,
+          y: 10,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          delay: 0.6,
+          duration: 1,
+        }}
+        className="
+          mt-4
+
+          tracking-[8px]
+
+          font-semibold
+
+          text-[#1f6f75]
+        "
+      >
+        H & R
+      </motion.p>
+
+      {/* Welcome Text */}
+      <motion.div
+        animate={{
+          opacity: [0.35, 0.8, 0.35],
+        }}
+        transition={{
+          duration: 3,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="
+          mt-8
+
+          text-sm
+
+          tracking-[4px]
+
+          uppercase
+
+          text-[#8b7b68]
+        "
+      >
+        Selamat Datang
+      </motion.div>
+    </div>
+  );
 }

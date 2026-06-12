@@ -5,7 +5,6 @@ import logo from "../../assets/logo/logo.png";
 import { invitationData } from "../../data/invitationData";
 
 import SectionBackground from "../shared/SectionBackground";
-
 import InvitationCard from "../shared/InvitationCard";
 
 export default function Closing() {
@@ -22,7 +21,7 @@ export default function Closing() {
     >
       <SectionBackground />
 
-      <div 
+      <div
         className="
           relative
           z-10
@@ -59,14 +58,16 @@ export default function Closing() {
               transition={{
                 duration: 4,
                 repeat: Infinity,
+                ease: "easeInOut",
               }}
               className="
                 w-24
 
                 mx-auto
+
                 animate-[floatLogo_4s_ease-in-out_infinite]
 
-                drop-shadow-[0_0_18px_rgba(220,239,255,0.9)]
+                drop-shadow-[0_0_25px_rgba(220,239,255,1)]
 
                 duration-500
               "
@@ -105,7 +106,7 @@ export default function Closing() {
               delay: 0.1,
             }}
             className="
-              mt-8
+              mt-10
 
               text-center
 
@@ -144,35 +145,78 @@ export default function Closing() {
             }}
             className="
               mt-6
-              
+
               max-w-2xl
               mx-auto
 
               text-center
 
-              tracking-[0.2px]
-
               leading-8
 
-              text-gray-600
+              tracking-[0.2px]
+
+              text-[#6d6258]
             "
           >
             {invitationData.closing.message}
           </motion.p>
 
-          {/* Divider */}
-          <div
+          {/* Final Decorative Divider */}
+          <motion.div
+            initial={{
+              opacity: 0,
+              scale: 0.8,
+            }}
+            whileInView={{
+              opacity: 1,
+              scale: 1,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 1,
+              delay: 0.3,
+            }}
             className="
-              w-24
-              h-px
+              flex
 
-              bg-[#2f9da3]/30
+              items-center
+              justify-center
 
-              mx-auto
+              gap-4
 
               my-10
             "
-          />
+          >
+            <div
+              className="
+                w-12
+                h-px
+
+                bg-[#2f9da3]/30
+              "
+            />
+
+            <span
+              className="
+                text-[#8b7b68]
+
+                text-sm
+              "
+            >
+              ✦
+            </span>
+
+            <div
+              className="
+                w-12
+                h-px
+
+                bg-[#2f9da3]/30
+              "
+            />
+          </motion.div>
         </InvitationCard>
       </div>
     </section>

@@ -8,16 +8,16 @@ interface Props {
 
 export default function MosqueLayer({ y }: Props) {
   return (
-    <>
+    <motion.div
+      style={{ y }}
+      className="absolute inset-0 pointer-events-none"
+    >
       {/* Glow */}
       <motion.div
-        style={{ y }}
         className="
           absolute
-
           left-1/2
           bottom-32
-
           -translate-x-1/2
 
           w-[450px]
@@ -25,29 +25,18 @@ export default function MosqueLayer({ y }: Props) {
 
           rounded-full
 
-          bg-white/70
+          bg-[#fefaf6]/70
 
           blur-[120px]
         "
-        initial={{
-          opacity: 0,
-          scale: 0.8,
-        }}
         animate={{
-          opacity: [0.35, 0.8, 0.35],
-          scale: [1, 1.08, 1],
+          opacity: [0.35, 0.75, 0.35],
+          scale: [1, 1.06, 1],
         }}
         transition={{
-          opacity: {
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          },
-          scale: {
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          },
+          duration: 12,
+          repeat: Infinity,
+          ease: "easeInOut",
         }}
       />
 
@@ -55,13 +44,11 @@ export default function MosqueLayer({ y }: Props) {
       <motion.img
         src={mosque}
         alt="Mosque"
-        style={{ y }}
         className="
           absolute
           bottom-0
           w-full
 
-          pointer-events-none
           select-none
         "
         initial={{
@@ -78,6 +65,6 @@ export default function MosqueLayer({ y }: Props) {
           ease: [0.22, 1, 0.36, 1],
         }}
       />
-    </>
+    </motion.div>
   );
 }

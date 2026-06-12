@@ -3,10 +3,28 @@
 @import "tailwindcss";
 
 :root {
+  /* Main Palette */
   --baby-blue: #dcefff;
   --teal-blue: #2f9da3;
   --soft-pink: #f8dce8;
   --soft-green: #b7d8c3;
+
+  /* Background */
+  --bg-light: #f9fdff;
+  --bg-gradient: #edf7fa;
+
+  /* Text  */
+  --text-dark: #34495e;
+  --text-medium: #607080;
+  --text-light: #8fa2b2;
+
+  /* Cards */
+  --card-bg: rgba(255, 255, 255, 0.55);
+  --card-border: rgba(255, 255, 255, 0.65);
+
+  /* Effects */
+  --shadow-soft: 0 8px 25px rgba(47, 157, 163, 0.10);
+  --shadow-large: 0 15px 45px rgba(47, 157, 163, 0.18);
 }
 
 html {
@@ -17,9 +35,14 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+
   font-family: "Poppins", sans-serif;
+  color: var(--text-dark);
+
   background: #eef6f8;
 }
+
+/* ==== Petals ==== */
 
 .petal {
   position: absolute;
@@ -53,6 +76,8 @@ body {
   }
 }
 
+/* ==== Shimmer ==== */
+
 @keyframes shimmer {
   0% {
     background-position: -300% 0;
@@ -63,6 +88,8 @@ body {
   }
 }
 
+/* ==== Scrollbar ==== */
+
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -71,6 +98,8 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* ==== Floating Particles ==== */
 
 .particle {
   position: fixed;
@@ -136,6 +165,8 @@ body {
   }
 }
 
+/* ==== Logo Animation ==== */
+
 @keyframes floatLogo {
   0% {
     transform: translateY(0px);
@@ -148,4 +179,54 @@ body {
   100% {
     transform: translateY(0px);
   }
+}
+
+/* ==== Reusable Glass Card ==== */
+
+.glass-card {
+  background: var(--card-bg);
+
+  border: 1px solid var(--card-border);
+
+  border-radius: 28px;
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow: var(--shadow-soft);
+
+  transition: all 0.4s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+
+  box-shadow: var(--shadow-large);
+}
+
+/* ==== Reusable Button ==== */
+
+.primary-button {
+  background: 
+    linear-gradient(
+      135deg,
+      var(--teal-blue),
+      #63c7cc
+    );
+
+    color: white;
+
+    padding: 12px 28px;
+
+    border-radius: 999px;
+
+    box-shadow: 0 8px 25px rgba(47, 157, 163, 0.3);
+
+    transition: all 0.3s ease;
+}
+
+.primary-button:hover {
+  transform: translateY(-3px);
+
+  box-shadow: 0 15px 35px rgba(47, 157, 163, 0.45);
 }

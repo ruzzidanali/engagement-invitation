@@ -6,7 +6,6 @@ import FloatingPetals from "../shared/FloatingPetals";
 import CoverScene from "../cover/CoverScene";
 import ShimmerLogo from "../cover/ShimmerLogo";
 import ShimmerText from "../cover/ShimmerText";
-import SparkleParticles from "../cover/SparkleParticles";
 
 import { invitationData } from "../../data/invitationData";
 
@@ -23,12 +22,6 @@ export default function Cover({ onOpen }: CoverProps) {
 
   const handleOpenInvitation = () => {
     onOpen();
-
-    // const section = document.getElementById("couple");
-
-    // section?.scrollIntoView({
-    //   behavior: "smooth",
-    // });
   };
 
   return (
@@ -45,14 +38,11 @@ export default function Cover({ onOpen }: CoverProps) {
       {/* Animated Scene */}
       <CoverScene />
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-white/10" />
+      {/* Warm Overlay */}
+      <div className="absolute inset-0 bg-[#fffaf0]/8" />
 
       {/* Petals */}
       <FloatingPetals />
-
-      {/* Sparkles */}
-      <SparkleParticles />
 
       {/* Main Container */}
       <div
@@ -103,7 +93,7 @@ export default function Cover({ onOpen }: CoverProps) {
               px-6
               sm:px-8
 
-              pb-[5%]
+              pb-[10%]
             "
           >
             {/* Logo */}
@@ -252,7 +242,7 @@ export default function Cover({ onOpen }: CoverProps) {
               </ShimmerText>
             </motion.h1>
 
-            {/* Button */}
+            {/* Open Invitation Button */}
             <motion.div
               initial={{
                 opacity: 0,
@@ -268,42 +258,22 @@ export default function Cover({ onOpen }: CoverProps) {
               <button
                 onClick={handleOpenInvitation}
                 className="
-                mt-8
-                sm:mt-10
+                  primary-button
 
-                rounded-full
+                  mt-8
+                  sm:mt-10
 
-                bg-white
+                  text-[10px]
+                  sm:text-xs
 
-                px-8
-                sm:px-10
+                  font-semibold
 
-                py-3
-                sm:py-4
+                  tracking-[3px]
+                  sm:tracking-[4px]
 
-                shadow-xl
+                  uppercase
 
-                text-[10px]
-                sm:text-xs
-
-                font-semibold
-
-                tracking-[3px]
-                sm:tracking-[4px]
-
-                uppercase
-
-                text-[#4a4037]
-
-                transition-all
-                duration-300
-
-                hover:-translate-y-1
-                hover:scale-105
-                hover:shadow-[0_10px_25px_rgba(47,157,163,0.35)]
-                active:scale-95
-
-                cursor-pointer
+                  cursor-pointer
                 "
               >
                 Buka Jemputan

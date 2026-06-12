@@ -25,10 +25,11 @@ export default function SkyLayer({ y }: Props) {
         select-none
       "
       animate={{
-        scale: [1, 1.08, 1],
+        scale: [1, 1.04, 1],
+        x: [0, -15, 0]
       }}
       transition={{
-        duration: 20,
+        duration: 35,
         repeat: Infinity,
         ease: "easeInOut",
       }}

@@ -1,14 +1,12 @@
 import { motion } from "framer-motion";
-import { CalendarDays } from "lucide-react";
+import { CalendarDays, CalendarPlus } from "lucide-react";
 
 import { invitationData } from "../../data/invitationData";
 import { useCountdown } from "../../hooks/useCountdown";
+import { downloadCalendar } from "../../utils/calendar";
 
 import SectionBackground from "../shared/SectionBackground";
 import InvitationCard from "../shared/InvitationCard";
-
-import { CalendarPlus } from "lucide-react";
-import { downloadCalendar} from "../../utils/calendar";
 
 export default function Event() {
   const countdown = useCountdown(
@@ -57,11 +55,22 @@ export default function Event() {
             className="text-center"
           >
             <div className="flex justify-center">
-              <CalendarDays
-                size={38}
-                strokeWidth={1.5}
-                className="text-[#1f6f75]"
-              />
+              <motion.div
+                animate={{
+                  y: [0, -4, 0],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                <CalendarDays
+                  size={38}
+                  strokeWidth={1.5}
+                  className="text-[#1f6f75]"
+                />
+              </motion.div>
             </div>
 
             <p
@@ -131,7 +140,7 @@ export default function Event() {
 
               tracking-[0.3px]
 
-              text-gray-600
+              text-[#6d6258]
             "
           >
             {invitationData.event.time}
@@ -189,7 +198,7 @@ export default function Event() {
 
                 space-y-1
 
-                text-gray-600
+                text-[#6d6258]
               "
             >
               {invitationData.event.address.map(
@@ -224,6 +233,7 @@ export default function Event() {
 
               tracking-[6px]
               text-[11px]
+
               font-medium
 
               text-[#8b7b68]
@@ -232,42 +242,42 @@ export default function Event() {
             Menghitung Hari Bahagia
           </p>
 
-          <div className="mt-6">
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 20,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 0.8,
+              delay: 0.3,
+            }}
+            className="mt-6"
+          >
             <CountdownGrid countdown={countdown} />
+
             <div className="mt-8 text-center">
               <button
                 onClick={downloadCalendar}
                 className="
+                  primary-button
+
                   inline-flex
                   items-center
                   gap-3
-
-                  rounded-full
-
-                  bg-[#1f6f75]
-
-                  px-8
-                  py-3
-
-                  text-white
-                  font-medium
-
-                  transition-all
-                  duration-300
-
-                  hover:-translate-y-1
-                  hover:scale-105
-                  hover:shadow-[0_10px_25px_rgba(47,157,163,0.35)]
-                  active:scale-95
-
-                  cursor-pointer
                 "
               >
                 <CalendarPlus size={20} />
                 Tambah ke Kalendar
               </button>
             </div>
-          </div>
+          </motion.div>
         </InvitationCard>
       </div>
     </section>
@@ -331,10 +341,12 @@ function CountdownItem({
       className="
         rounded-2xl
 
-        bg-[#eef6f8]
+        bg-white/70
+
+        backdrop-blur-sm
 
         border
-        border-white
+        border-white/60
 
         py-5
 
@@ -366,7 +378,7 @@ function CountdownItem({
 
           tracking-[2px]
 
-          text-gray-500
+          text-[#8b7b68]
         "
       >
         {label}

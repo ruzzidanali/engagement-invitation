@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 import { MapPinned } from "lucide-react";
+import QRCode from "react-qr-code";
 
 import { invitationData } from "../../data/invitationData";
 
 import SectionBackground from "../shared/SectionBackground";
 import InvitationCard from "../shared/InvitationCard";
-import QRCode from "react-qr-code";
 
 export default function Location() {
   const openGoogleMaps = () => {
@@ -27,7 +27,7 @@ export default function Location() {
       className="
         relative
         overflow-hidden
-        
+
         px-6
         py-16
         sm:py-20
@@ -39,7 +39,7 @@ export default function Location() {
         className="
           relative
           z-10
-          
+
           max-w-4xl
           mx-auto
         "
@@ -64,17 +64,28 @@ export default function Location() {
             className="text-center"
           >
             <div className="flex justify-center">
-              <MapPinned
-                size={48}
-                strokeWidth={1.5}
-                className="text-[#1f6f75]"
-              />
+              <motion.div
+                animate={{
+                  y: [0, -4, 0],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                <MapPinned
+                  size={48}
+                  strokeWidth={1.5}
+                  className="text-[#1f6f75]"
+                />
+              </motion.div>
             </div>
 
             <p
               className="
                 mt-4
-                
+
                 uppercase
 
                 tracking-[6px]
@@ -103,29 +114,63 @@ export default function Location() {
           />
 
           {/* Map */}
-          <div
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 30,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 0.8,
+              delay: 0.2,
+            }}
             className="
               overflow-hidden
 
               rounded-[24px]
 
+              border
+              border-white/70
+
               shadow-md
             "
           >
             <iframe
-            title="Location Map"
-            src={invitationData.event.embedMap}
-            width="100%"
-            height="380"
-            loading="lazy"
-            className="border-0"
-          />
-          </div>
+              title="Location Map"
+              src={invitationData.event.embedMap}
+              width="100%"
+              height="380"
+              loading="lazy"
+              className="border-0"
+            />
+          </motion.div>
+
           {/* Helper Text */}
-          <p
+          <motion.p
+            initial={{
+              opacity: 0,
+              y: 15,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 0.8,
+              delay: 0.3,
+            }}
             className="
               mt-5
-              
+
               text-center
 
               text-sm
@@ -134,18 +179,18 @@ export default function Location() {
 
               tracking-[0.2px]
 
-              text-gray-500
-            " 
+              text-[#6d6258]
+            "
           >
-            Klik Google Maps atau Waze untuk navigasi terus ke lokasi Majlis.
-          </p>
+            Klik Google Maps atau Waze untuk navigasi terus ke lokasi majlis.
+          </motion.p>
 
           {/* Divider */}
           <div
             className="
               mx-auto
               my-8
-              
+
               h-px
               w-24
 
@@ -153,8 +198,23 @@ export default function Location() {
             "
           />
 
-          {/* Buttons */}
-          <div
+          {/* Navigation Buttons */}
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 20,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 0.8,
+              delay: 0.4,
+            }}
             className="
               flex
 
@@ -169,25 +229,7 @@ export default function Location() {
             <button
               onClick={openGoogleMaps}
               className="
-                rounded-full
-
-                bg-[#1f6f75]
-
-                px-8
-                py-3
-
-                text-white
-
-                font-medium
-
-                transition-all
-                duration-300
-
-                hover:-translate-y-1
-                hover:scale-105
-                hover:shadow-[0_10px_25px_rgba(47,157,163,0.35)]
-
-                active:scale-95
+                primary-button
 
                 cursor-pointer
               "
@@ -201,8 +243,11 @@ export default function Location() {
                 rounded-full
 
                 border
-
                 border-[#1f6f75]
+
+                bg-white/60
+
+                backdrop-blur-sm
 
                 px-8
                 py-3
@@ -216,7 +261,7 @@ export default function Location() {
 
                 hover:-translate-y-1
                 hover:scale-105
-                hover:shadow-[0_10px_25px_rgba(47,157,163,0.35)]
+                hover:shadow-[0_10px_25px_rgba(47,157,163,0.25)]
 
                 active:scale-95
 
@@ -225,64 +270,88 @@ export default function Location() {
             >
               Waze
             </button>
-            <div
-              className="
-                mt-10
+          </motion.div>
 
-                text-center
+          {/* QR Section */}
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 25,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 0.8,
+              delay: 0.6,
+            }}
+            className="
+              mt-10
+
+              text-center
+            "
+          >
+            <p
+              className="
+                uppercase
+
+                tracking-[6px]
+
+                text-[11px]
+
+                font-medium
+
+                text-[#8b7b68]
               "
             >
-              <p
-                className="
-                  uppercase
+              Atau Imbas QR
+            </p>
 
-                  tracking-[6px]
+            <div
+              className="
+                mt-5
 
-                  text-[11px]
-                  font-medium
+                inline-block
 
-                  text-[#8b7b68]
-                "
-              >
-                Atau Imbas QR
-              </p>
+                rounded-[24px]
 
-              <div
-                className="
-                  mt-5
+                bg-white/80
 
-                  inline-block
+                p-4
 
-                  rounded-[24px]
+                shadow-lg
 
-                  bg-white
-
-                  p-4
-
-                  shadow-lg
-                "
-              >
-                <QRCode
-                  value={invitationData.event.gmap}
-                  size={160}
-                  bgColor="transparent"
-                  fgColor="#1f6f75"
-                />
-              </div>
-
-              <p
-                className="
-                  mt-4
-
-                  text-sm
-
-                  text-gray-500
-                "
-              >
-                Imbas menggunakan kamera telefon untuk membuka lokasi
-              </p>
+                backdrop-blur-sm
+              "
+            >
+              <QRCode
+                value={invitationData.event.gmap}
+                size={160}
+                bgColor="transparent"
+                fgColor="#1f6f75"
+              />
             </div>
-          </div>
+
+            <p
+              className="
+                mt-4
+
+                text-sm
+
+                leading-7
+
+                text-[#6d6258]
+              "
+            >
+              Imbas menggunakan kamera telefon
+              <br />
+              untuk membuka lokasi.
+            </p>
+          </motion.div>
         </InvitationCard>
       </div>
     </section>

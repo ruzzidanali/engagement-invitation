@@ -34,7 +34,7 @@ export default function ShimmerText({
         "
         style={{
           background:
-            "linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.95) 50%, transparent 100%)",
+            "linear-gradient(120deg, transparent 35%, rgba(255,248,235,0.75) 50%, transparent 65%)",
 
           backgroundSize: "250% 100%",
 
@@ -52,7 +52,7 @@ export default function ShimmerText({
           ],
         }}
         transition={{
-          duration: 10,
+          duration: 14,
           repeat: Infinity,
           ease: "linear",
         }}

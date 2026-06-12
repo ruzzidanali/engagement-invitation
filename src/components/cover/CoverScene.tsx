@@ -8,6 +8,8 @@ import BirdLayer from "./BirdLayer";
 import LeafLayer from "./LeafLayer";
 import CloudLayer from "./CloudLayer";
 import SparkleLayer from "./SparkleLayer";
+import LightRaysLayer from "./LightRaysLayer";
+import SparkleParticles from "./SparkleParticles";
 
 export default function CoverScene() {
   const { scrollY } = useScroll();
@@ -31,7 +33,7 @@ export default function CoverScene() {
         rounded-[40px]
       "
       animate={{
-        scale: [1, 1.03, 1],
+        scale: [1, 1.01, 1],
       }}
       transition={{
         duration: 30,
@@ -43,11 +45,15 @@ export default function CoverScene() {
 
       <CloudLayer y={cloudY} />
 
+      <LightRaysLayer />
+
       <SparkleLayer />
 
       <MountainLayer y={mountainY} />
 
       <MosqueLayer y={mosqueY} />
+
+      <SparkleParticles />
 
       <BirdLayer />
 

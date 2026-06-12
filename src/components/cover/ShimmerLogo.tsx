@@ -59,9 +59,7 @@ export default function ShimmerLogo({ src }: Props) {
         animate={{
           scale: [1, 1.02, 1],
           filter: [
-            "drop-shadow(0 0 0px rgba(255,255,255,0))",
-            "drop-shadow(0 0 15px rgba(255,255,255,0.8))",
-            "drop-shadow(0 0 0px rgba(255,255,255,0))",
+            "drop-shadow(0 0 12px rgba(255,248,235,0.55))",
           ],
         }}
         transition={{
@@ -89,11 +87,11 @@ export default function ShimmerLogo({ src }: Props) {
         "
         animate={{
           opacity: [0, 1, 0],
-          scale: [0.5, 1.4, 0.5],
-          rotate: [0, 180],
+          scale: [0.8, 1.15, 0.8],
+          rotate: 90,
         }}
         transition={{
-          duration: 2,
+          duration: 3,
           repeat: Infinity,
           repeatDelay: 4,
         }}
@@ -119,11 +117,11 @@ export default function ShimmerLogo({ src }: Props) {
         "
         animate={{
           opacity: [0, 1, 0],
-          scale: [0.5, 1.3, 0.5],
-          rotate: [0, -180],
+          scale: [0.8, 1.15, 0.8],
+          rotate: 90,
         }}
         transition={{
-          duration: 2.5,
+          duration: 3,
           repeat: Infinity,
           repeatDelay: 3,
           delay: 1,
@@ -150,11 +148,11 @@ export default function ShimmerLogo({ src }: Props) {
         "
         animate={{
           opacity: [0, 1, 0],
-          scale: [0.5, 1.4, 0.5],
-          rotate: [0, 180],
+          scale: [0.8, 1.15, 0.8],
+          rotate: 90,
         }}
         transition={{
-          duration: 2,
+          duration: 3,
           repeat: Infinity,
           repeatDelay: 5,
           delay: 2,
@@ -168,8 +166,8 @@ export default function ShimmerLogo({ src }: Props) {
         className="
           absolute
 
-          w-4
-          h-4
+          w-2
+          h-2
 
           rounded-full
 
@@ -182,8 +180,8 @@ export default function ShimmerLogo({ src }: Props) {
           pointer-events-none
         "
         animate={{
-          x: [-30, 0, 30],
-          y: [10, -15, 10],
+          x: [-15, 0, 15],
+          y: [5, -8, 5],
           opacity: [0, 1, 0],
           scale: [0.5, 1.5, 0.5],
         }}

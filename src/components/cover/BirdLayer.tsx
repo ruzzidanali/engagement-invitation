@@ -26,39 +26,32 @@ export default function BirdLayer() {
         x: "-30vw",
       }}
       animate={{
-        opacity: 1,
+        opacity: 0.75,
         x: ["-30vw", "120vw"],
-        y: [0, -40, 20, -30, 10, 0],
-        rotate: [-2, 2, -2],
-        scale: [1, 1.05, 1],
+        y: [0, -10, 5, -8, 3, 0],
+        rotate: [-1, 1, -1],
       }}
       transition={{
         opacity: {
           delay: 5.5,
-          duration: 1,
+          duration: 2,
         },
 
         x: {
           delay: 5.5,
-          duration: 28,
+          duration: 40,
           repeat: Infinity,
           ease: "linear",
         },
 
         y: {
-          duration: 12,
+          duration: 18,
           repeat: Infinity,
           ease: "easeInOut",
         },
 
         rotate: {
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-        },
-
-        scale: {
-          duration: 8,
+          duration: 15,
           repeat: Infinity,
           ease: "easeInOut",
         },

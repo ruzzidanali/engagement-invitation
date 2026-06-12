@@ -16,17 +16,19 @@ export default function SparkleLayer() {
 
         object-cover
 
-        opacity-60
+        opacity-40
 
         pointer-events-none
         select-none
       "
       animate={{
-        opacity: [0.3, 0.8, 0.3],
+        opacity: [0.25, 0.55, 0.25],
+        scale: [1, 1.02, 1],
       }}
       transition={{
-        duration: 5,
+        duration: 12,
         repeat: Infinity,
+        ease: "easeInOut",
       }}
     />
   );

@@ -23,12 +23,12 @@ export default function LeafLayer() {
           pointer-events-none
           select-none
 
-          z-30
+          z-10
         "
         animate={{
-          y: [0, -30, 0],
-          rotate: [-2, 2, -2],
-          x: [0, 10, 0],
+          y: [0, -15, 0],
+          rotate: [-1, 1, -1],
+          x: [0, 5, 0],
         }}
         transition={{
           duration: 25,
@@ -55,12 +55,12 @@ export default function LeafLayer() {
           pointer-events-none
           select-none
 
-          z-30
+          z-10
         "
         animate={{
-          y: [0, 40, 0],
-          rotate: [2, -2, 2],
-          x: [0, -15, 0],
+          y: [0, 20, 0],
+          rotate: [1, -1, 1],
+          x: [0, -8, 0],
         }}
         transition={{
           duration: 30,
@@ -90,12 +90,12 @@ export default function LeafLayer() {
           pointer-events-none
           select-none
 
-          z-20
+          z-5
         "
         animate={{
           y: [0, -25, 0],
           rotate: [-1, 1, -1],
-          scale: [1, 1.05, 1],
+          scale: [1, 1.02, 1],
         }}
         transition={{
           duration: 35,
