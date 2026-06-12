@@ -134,6 +134,10 @@ export default function RSVP() {
                 text-[11px]
                 font-medium
 
+                leading-none
+
+                drop-shadow-[0_4px_10px_rgba(47,157,163,0.15)]
+
                 text-[#8b7b68]
               "
             >

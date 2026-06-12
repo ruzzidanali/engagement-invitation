@@ -58,10 +58,8 @@ export default function Bismillah() {
             sm:w-24
             animate-[floatLogo_4s_ease-in-out_infinite]
 
-            drop-shadow-[0_0_12px_rgba(220,239,255,0.8)]
-            hover:drop-shadow-[0_0_20px_rgba(248,220,232,0.8)]
+            drop-shadow-[0_0_18px_rgba(220,239,255,0.9)]
 
-            transition-all
             duration-500
         "
         />

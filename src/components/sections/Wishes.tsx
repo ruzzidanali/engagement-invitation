@@ -147,6 +147,10 @@ export default function Wishes() {
                 text-[42px]
                 sm:text-[52px]
 
+                leading-none
+                
+                drop-shadow-[0_4px_10px_rgba(47,157,163,0.15)]
+
                 text-[#1f6f75]
               "
               style={{
